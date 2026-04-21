@@ -1,0 +1,132 @@
+---
+// Props for the pagination component
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  prevUrl: string | null;
+  nextUrl: string | null;
+  basePath: string;
+}
+
+const { currentPage, totalPages, prevUrl, nextUrl, basePath } = Astro.props;
+
+// Generate page numbers to display
+const pageNumbers = () => {
+  const pages = [];
+  const maxPagesToShow = 5;
+  
+  // Always show first page
+  pages.push(1);
+  
+  // Calculate range of pages to show around current page
+  let startPage = Math.max(2, currentPage - Math.floor(maxPagesToShow / 2));
+  let endPage = Math.min(totalPages - 1, startPage + maxPagesToShow - 2);
+  
+  // Adjust if we're near the beginning
+  if (startPage > 2) {
+    pages.push('...');
+  }
+  
+  // Add middle pages
+  for (let i = startPage; i <= endPage; i++) {
+    pages.push(i);
+  }
+  
+  // Adjust if we're near the end
+  if (endPage < totalPages - 1) {
+    pages.push('...');
+  }
+  
+  // Always show last page if there's more than one page
+  if (totalPages > 1) {
+    pages.push(totalPages);
+  }
+  
+  return pages;
+};
+
+// Generate the URL for a specific page
+const getPageUrl = (pageNum: number) => {
+  if (pageNum === 1) {
+    return basePath;
+  }
+  return `${basePath}${basePath.endsWith('/') ? '' : '/'}page/${pageNum}/`;
+};
+---
+
+{totalPages > 1 && (
+  <nav aria-label="Pagination" class="my-16">
+    <ul class="flex justify-center items-center gap-2">
+      <!-- Previous page button -->
+      <li>
+        {prevUrl ? (
+          <a 
+            href={prevUrl} 
+            class="flex items-center justify-center w-12 h-12 rounded-xl bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-primary border border-surface-container-high transition-all active:scale-95 ink-shadow"
+            aria-label="Go to previous page"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span class="sr-only">Anterior</span>
+          </a>
+        ) : (
+          <span 
+            class="flex items-center justify-center w-12 h-12 rounded-xl bg-surface text-outline-variant border border-surface-container opacity-40 cursor-not-allowed"
+            aria-disabled="true"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span class="sr-only">Anterior</span>
+          </span>
+        )}
+      </li>
+      
+      <!-- Page numbers -->
+      {pageNumbers().map((pageNum) => (
+        <li>
+          {pageNum === '...' ? (
+            <span class="w-12 h-12 flex items-center justify-center text-on-surface-variant font-medium">...</span>
+          ) : (
+            <a 
+              href={getPageUrl(pageNum as number)} 
+              class={`flex items-center justify-center w-12 h-12 rounded-xl transition-all active:scale-95 ${currentPage === pageNum 
+                ? 'hero-gradient text-white font-bold ink-shadow-primary border-transparent' 
+                : 'bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-primary border border-surface-container-high'}`}
+              aria-current={currentPage === pageNum ? 'page' : undefined}
+            >
+              {pageNum}
+            </a>
+          )}
+        </li>
+      ))}
+      
+      <!-- Next page button -->
+      <li>
+        {nextUrl ? (
+          <a 
+            href={nextUrl} 
+            class="flex items-center justify-center w-12 h-12 rounded-xl bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-primary border border-surface-container-high transition-all active:scale-95 ink-shadow"
+            aria-label="Go to next page"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span class="sr-only">Próximo</span>
+          </a>
+        ) : (
+          <span 
+            class="flex items-center justify-center w-12 h-12 rounded-xl bg-surface text-outline-variant border border-surface-container opacity-40 cursor-not-allowed"
+            aria-disabled="true"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span class="sr-only">Próximo</span>
+          </span>
+        )}
+      </li>
+    </ul>
+  </nav>
+)}

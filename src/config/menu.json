@@ -1,0 +1,92 @@
+{
+  "main": [
+    {
+      "name": "Início",
+      "url": "/"
+    },
+    {
+      "name": "Categorias",
+      "url": "/categorias/",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Melhores Marcas",
+          "url": "/melhores-marcas/"
+        },
+        {
+          "name": "Dicas e Manutenção",
+          "url": "/dicas-e-manutencao/"
+        },
+        {
+          "name": "Custo-Benefício",
+          "url": "/custo-beneficio/"
+        },
+        {
+          "name": "Modelos 3 em 1",
+          "url": "/modelos-3-em-1/"
+        },
+        {
+          "name": "Com Função Mop",
+          "url": "/com-funcao-mop/"
+        },
+        {
+          "name": "Com Mapeamento",
+          "url": "/com-mapeamento/"
+        },
+        {
+          "name": "Para Pets",
+          "url": "/para-pets/"
+        },
+        {
+          "name": "Bases Autolimpantes",
+          "url": "/bases-autolimpantes/"
+        },
+        {
+          "name": "Para Piscinas",
+          "url": "/para-piscinas/"
+        }
+      ]
+    },
+    {
+      "name": "Contato",
+      "url": "/contato/",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Sobre Nós",
+          "url": "/sobre-nos/"
+        },
+        {
+          "name": "Política de Privacidade",
+          "url": "/politica-de-privacidade/"
+        },
+        {
+          "name": "Termos de Uso",
+          "url": "/termos-de-uso/"
+        }
+      ]
+    }
+  ],
+  "footer": [
+    {
+      "name": "Categorias",
+      "url": "/categorias/"
+    },
+    {
+      "name": "Sobre Nós",
+      "url": "/sobre-nos/"
+    },
+    {
+      "name": "Contato",
+      "url": "/contato/"
+    },
+    {
+      "name": "Política de Privacidade",
+      "url": "/politica-de-privacidade/"
+    },
+    {
+      "name": "Termos de Uso",
+      "url": "/termos-de-uso/"
+    }
+  ]
+}

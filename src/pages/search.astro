@@ -1,0 +1,178 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '@layouts/Layout.astro';
+import { siteConfig } from '@config/site'; // Import siteConfig
+import { Icon } from "astro-icon/components";
+---
+
+<Layout title={`Busca | ${siteConfig.title}`} description={`Busque artigos e reviews no ${siteConfig.title}`} noindex={true}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8 text-center">Busca</h1>
+    
+    <div class="mb-12">
+      <div class="relative group">
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="O que você está procurando?" 
+          class="w-full px-6 py-4 bg-surface-container border border-outline-variant/10 rounded-2xl focus:ring-4 focus:ring-primary/20 focus:border-primary/40 text-on-surface font-body transition-all outline-none text-lg"
+          autocomplete="off"
+        />
+        <div class="absolute right-5 top-4.5 text-on-surface-variant/40 group-focus-within:text-primary transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    
+    <div id="search-info" class="text-center mb-6 text-gray-600 dark:text-gray-400 text-lg"></div>
+    
+    <div id="search-results" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Results will be populated by JavaScript -->
+    </div>
+    
+    <div id="no-results" class="hidden text-center py-16 bg-surface-container rounded-2xl border border-outline-variant/10">
+      <Icon name="mdi:magnify-close" class="w-16 h-16 text-on-surface-variant/20 mx-auto mb-4" />
+      <p class="text-xl font-headline font-bold text-on-surface">Nenhum resultado encontrado</p>
+      <p class="text-on-surface-variant font-body mt-2">Tente buscar por termos mais genéricos, como "Xiaomi" ou "WAP".</p>
+    </div>
+  </div>
+</Layout>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.min.js"></script>
+<script is:inline>
+  (function() {
+    // Loading spinner HTML
+    const SPINNER = `<div class="flex justify-center py-20">
+      <div class="relative w-12 h-12">
+        <div class="absolute w-12 h-12 rounded-full border-4 border-primary/20"></div>
+        <div class="absolute w-12 h-12 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
+      </div>
+    </div>`;
+
+    const initSearch = async () => {
+      const searchInput = document.getElementById('search-input');
+      const searchResults = document.getElementById('search-results');
+      const noResults = document.getElementById('no-results');
+      const searchInfo = document.getElementById('search-info');
+      
+      if (!searchInput || !searchResults) return;
+
+      let searchData = null;
+      let fuse = null;
+      
+      const searchParams = new URLSearchParams(window.location.search);
+      const searchQuery = searchParams.get('q');
+      
+      async function fetchSearchData() {
+        try {
+          searchResults.innerHTML = SPINNER;
+          const response = await fetch('/search.json');
+          if (!response.ok) throw new Error('Failed to fetch data');
+          
+          searchData = await response.json();
+          console.log('Search Data Loaded:', searchData.length);
+          
+          if (typeof Fuse === 'undefined') {
+            console.error('Fuse is not loaded from CDN');
+            throw new Error('Search engine not loaded');
+          }
+
+          fuse = new Fuse(searchData, {
+            keys: ['title', 'description', 'categories', 'tags'],
+            threshold: 0.4,
+            minMatchCharLength: 2,
+            ignoreLocation: true
+          });
+          
+          if (searchQuery) {
+            searchInput.value = searchQuery;
+            performSearch(searchQuery);
+          } else {
+            searchResults.innerHTML = '';
+          }
+        } catch (error) {
+          console.error('Search init error:', error);
+          searchResults.innerHTML = '<div class="text-center py-12 text-error font-bold text-lg">Erro ao carregar busca. Por favor recarregue a página.</div>';
+        }
+      }
+      
+      function displayResults(results) {
+        searchResults.innerHTML = '';
+        
+        if (results.length === 0) {
+          searchResults.classList.add('hidden');
+          noResults.classList.remove('hidden');
+          searchInfo.innerHTML = '';
+          return;
+        }
+        
+        searchResults.classList.remove('hidden');
+        noResults.classList.add('hidden');
+        searchInfo.innerHTML = `<span class="text-on-surface-variant italic font-body">Encontramos <span class="text-primary font-bold not-italic">${results.length}</span> resultado${results.length === 1 ? '' : 's'}</span>`;
+        
+        results.forEach(result => {
+          const post = result.item;
+          const article = document.createElement('article');
+          article.className = 'flex flex-col group h-full';
+          
+          let imageHtml = '';
+          if (post.image) {
+            imageHtml = `
+              <a href="/${post.slug}/" class="relative mb-6 overflow-hidden rounded-[1.5rem] aspect-[16/10] bg-surface-variant block">
+                <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="bg-primary text-on-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-md">${post.categories?.[0] || 'Geral'}</span>
+                </div>
+              </a>
+            `;
+          }
+          
+          article.innerHTML = `
+            ${imageHtml}
+            <h3 class="font-headline text-2xl font-bold text-on-surface mb-4 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
+              <a href="/${post.slug}/">${post.title}</a>
+            </h3>
+            
+            ${post.description ? `<p class="font-body text-on-surface-variant leading-relaxed mb-4 line-clamp-3 text-sm">${post.description}</p>` : ''}
+            
+            <div class="mt-auto flex items-center justify-between pt-4 border-t border-surface-container-low/30">
+              <a href="/${post.slug}/" class="font-bold font-body text-primary tracking-tight hover:text-primary-container transition-colors text-sm">Análise Completa</a>
+              <span class="font-body text-[10px] font-semibold text-on-surface-variant flex items-center gap-1 uppercase tracking-widest">
+                ${post.date}
+              </span>
+            </div>
+          `;
+          searchResults.appendChild(article);
+        });
+      }
+      
+      function performSearch(query) {
+        if (!fuse || !query || query.trim() === '') {
+          searchResults.innerHTML = '';
+          searchResults.classList.add('hidden');
+          noResults.classList.add('hidden');
+          searchInfo.innerHTML = '';
+          return;
+        }
+        
+        const results = fuse.search(query);
+        displayResults(results);
+      }
+      
+      let debounceTimer;
+      searchInput.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          performSearch(searchInput.value.trim());
+        }, 300);
+      });
+      
+      searchInput.focus();
+      fetchSearchData();
+    };
+
+    initSearch();
+  })();
+</script>

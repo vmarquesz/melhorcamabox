@@ -1,0 +1,43 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+  className?: string;
+}
+
+const { items, className = "" } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class={`breadcrumb ${className}`}>
+  <ol class="flex flex-wrap items-center space-x-1 md:space-x-2 text-sm md:text-base">
+    {items.map((item, index) => (
+      <li class="flex items-center">
+        {index > 0 && (
+          <Icon name="mdi:chevron-right" class="w-4 h-4 mx-1 text-on-surface-variant/40" />
+        )}
+        {index === items.length - 1 ? (
+          <span class="text-on-surface" aria-current="page">{item.name}</span>
+        ) : (
+          <a 
+            href={item.url} 
+            class="text-on-surface-variant hover:text-primary transition-colors duration-200"
+          >
+            {item.name}
+          </a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .breadcrumb {
+    margin-bottom: 1.5rem;
+  }
+</style>

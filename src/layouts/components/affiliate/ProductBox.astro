@@ -1,0 +1,53 @@
+---
+interface Props {
+  title: string;
+  image: string;
+  link: string;
+  description?: string;
+}
+
+const { title, image, link, description } = Astro.props;
+---
+
+<div class="product-box not-prose my-12 bg-surface-container-lowest dark:bg-surface-container-high/30 rounded-[2rem] border border-outline-variant/10 grid grid-cols-1 md:grid-cols-[260px_1fr] md:gap-12 items-center p-8 md:p-10 shadow-[0px_12px_32px_rgba(13,30,37,0.06)] transition-transform duration-500 hover:scale-[1.01]">
+  
+  <!-- Left Column: Image -->
+  <a href={link} target="_blank" rel="nofollow sponsored" class="group w-full max-w-[260px] mx-auto mb-8 md:mb-0 bg-white rounded-2xl shadow-sm p-6 flex items-center justify-center aspect-square shrink-0 hover:shadow-xl transition-all duration-300">
+    <img 
+      src={image} 
+      alt={title} 
+      class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" 
+      loading="lazy"
+      width="260"
+      height="260"
+    />
+  </a>
+  
+  <!-- Right Column: Content -->
+  <div class="flex flex-col text-center md:text-left justify-center items-center md:items-start">
+    <a 
+      href={link} 
+      target="_blank" 
+      rel="nofollow sponsored" 
+      class="font-headline text-3xl md:text-4xl font-extrabold text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity leading-[1.1] mb-6 tracking-tighter italic"
+    >
+      {title}
+    </a>
+    
+    {description && (
+      <p class="font-body text-on-surface-variant text-base md:text-lg leading-relaxed mb-8 max-w-xl">
+        {description}
+      </p>
+    )}
+    
+    <a 
+      href={link} 
+      target="_blank" 
+      rel="nofollow sponsored" 
+      class="inline-flex items-center justify-center w-full sm:w-auto bg-primary text-on-primary px-12 py-5 rounded-2xl font-bold font-headline hover:bg-primary-container hover:!text-white hover:shadow-2xl hover:-translate-y-1 transition-all text-sm uppercase tracking-[0.2em]"
+    >
+      Ver Preço na Amazon
+    </a>
+  </div>
+
+</div>

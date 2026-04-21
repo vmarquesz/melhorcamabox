@@ -1,0 +1,314 @@
+/* ===== Self-hosted Fonts (Manrope + Inter) ===== */
+
+/* Inter — latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('/fonts/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Inter — latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('/fonts/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Manrope — latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/manrope-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Manrope — latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/manrope-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Dark mode variant for class-based toggling */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Theme configuration based on Precision Editorial (Stitch) */
+@theme {
+  /* Material 3 Colors - Precision Editorial Palette (Stitch) */
+  --color-on-primary-container: #8690ee;
+  --color-surface-container-highest: #d4e5ef;
+  --color-on-background: #0d1e25;
+  --color-primary-container: #1a237e;
+  --color-inverse-on-surface: #e2f3fd;
+  --color-tertiary-fixed-dim: #ffb59d;
+  --color-surface-container: #dff1fb;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface: #f4faff;
+  --color-on-surface: #0d1e25;
+  --color-on-surface-variant: #454652;
+  --color-on-tertiary-fixed: #390c00;
+  --color-tertiary-fixed: #ffdbd0;
+  --color-primary-fixed-dim: #bdc2ff;
+  --color-surface-container-low: #e7f6ff;
+  --color-on-secondary-fixed: #151839;
+  --color-on-primary-fixed: #000767;
+  --color-error: #ba1a1a;
+  --color-primary: #000666;
+  --color-secondary-container: #d2d4ff;
+  --color-inverse-surface: #23333a;
+  --color-secondary-fixed-dim: #c1c3ed;
+  --color-secondary: #585c80;
+  --color-on-tertiary-container: #e17c5a;
+  --color-tertiary-container: #5c1800;
+  --color-on-secondary: #ffffff;
+  --color-surface-container-high: #d9ebf5;
+  --color-on-error: #ffffff;
+  --color-background: #f4faff;
+  --color-surface-tint: #4c56af;
+  --color-inverse-primary: #bdc2ff;
+  --color-on-secondary-fixed-variant: #414467;
+  --color-surface-dim: #cbdde7;
+  --color-on-primary-fixed-variant: #343d96;
+  --color-error-container: #ffdad6;
+  --color-tertiary: #380b00;
+  --color-on-tertiary: #ffffff;
+  --color-on-primary: #ffffff;
+  --color-on-secondary-container: #575b7f;
+  --color-outline-variant: #c6c5d4;
+  --color-secondary-fixed: #e0e0ff;
+  --color-on-tertiary-fixed-variant: #7b2e12;
+  --color-on-error-container: #93000a;
+  --color-surface-bright: #f4faff;
+  --color-primary-fixed: #e0e0ff;
+  --color-surface-variant: #d4e5ef;
+  --color-outline: #767683;
+
+  /* Fonts - Manrope for headlines, Inter for body */
+  --font-headline: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-label: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer utilities {
+  .ink-shadow {
+    box-shadow: 0px 12px 32px rgba(13, 30, 37, 0.06);
+  }
+  .hero-gradient {
+    background: linear-gradient(135deg, #000666 0%, #1a237e 100%);
+  }
+  
+  /* The Editorial Voice - Prose Overrides */
+  .prose-brand {
+    --tw-prose-body: var(--color-on-surface-variant);
+    --tw-prose-headings: var(--color-on-surface);
+    --tw-prose-links: var(--color-primary);
+    --tw-prose-bold: var(--color-on-surface);
+    --tw-prose-quotes: var(--color-on-surface);
+    --tw-prose-code: var(--color-on-surface);
+    --tw-prose-hr: var(--color-outline-variant);
+    --tw-prose-th-borders: var(--color-outline-variant);
+  }
+  
+  .prose-brand h1, .prose-brand h2, .prose-brand h3, .prose-brand h4 {
+    font-family: var(--font-headline);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+  }
+  
+  .prose-brand a {
+    font-weight: 700;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    transition: all 0.2s;
+  }
+  
+  .prose-brand a:hover {
+    color: var(--color-primary-container);
+  }
+  
+  .prose-brand p, .prose-brand li {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+  
+  .prose-brand hr {
+    margin: 3rem 0;
+    border-top: 1px solid var(--color-outline-variant);
+    opacity: 0.2;
+  }
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* Dark mode colors - Stitch Dark (Slate/Indigo) */
+.dark {
+  color-scheme: dark;
+  
+  /* Surface & Background - Slate Deep */
+  --color-background: #020617;          /* slate-950 */
+  --color-on-background: #f8fafc;       /* slate-50 */
+  
+  --color-surface: #020617;             /* slate-950 */
+  --color-on-surface: #f8fafc;          /* slate-50 */
+  --color-on-surface-variant: #cbd5e1;  /* slate-300 */
+  
+  --color-surface-container-lowest: #020617;  /* slate-950 */
+  --color-surface-container-low: #0f172a;     /* slate-900 */
+  --color-surface-container: #0f172a;         /* slate-900 */
+  --color-surface-container-high: #1e293b;    /* slate-800 */
+  --color-surface-container-highest: #1e293b; /* slate-800 */
+  
+  --color-surface-bright: #0f172a;      /* slate-900 */
+  --color-surface-dim: #020617;         /* slate-950 */
+  --color-surface-variant: #334155;     /* slate-700 */
+  --color-surface-tint: #818cf8;        /* indigo-400 */
+  
+  /* Primary - Indigo vibrante */
+  --color-primary: #818cf8;             /* indigo-400 */
+  --color-on-primary: #000767;
+  --color-primary-container: #312e81;   /* indigo-900 */
+  --color-on-primary-container: #8690ee;
+  --color-primary-fixed: #e0e0ff;
+  --color-primary-fixed-dim: #bdc2ff;
+  
+  /* Secondary - Slate neutral */
+  --color-secondary: #94a3b8;           /* slate-400 */
+  --color-on-secondary: #1e293b;        /* slate-800 */
+  --color-secondary-container: #334155; /* slate-700 */
+  --color-on-secondary-container: #e2e8f0; /* slate-200 */
+  --color-secondary-fixed: #e0e0ff;
+  --color-secondary-fixed-dim: #c1c3ed;
+  
+  /* Tertiary - Warm tech highlights */
+  --color-tertiary: #ffb59d;
+  --color-on-tertiary: #5c1800;
+  --color-tertiary-container: #5c1800;
+  --color-on-tertiary-container: #ffdbd0;
+  --color-tertiary-fixed: #ffdbd0;
+  --color-tertiary-fixed-dim: #ffb59d;
+  
+  /* Outline - Slate borders */
+  --color-outline: #94a3b8;             /* slate-400 */
+  --color-outline-variant: #475569;     /* slate-600 */
+  
+  /* Error */
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+  
+  /* Inverse */
+  --color-inverse-surface: #f8fafc;
+  --color-inverse-on-surface: #0f172a;
+  --color-inverse-primary: #000666;
+  
+  /* Brand additions */
+  --tw-prose-body: var(--color-on-surface-variant);
+  --tw-prose-headings: var(--color-on-surface);
+  --tw-prose-links: var(--color-primary);
+  --tw-prose-bold: var(--color-on-surface);
+  
+  /* Gradient override for dark mode */
+  .hero-gradient {
+    background: linear-gradient(135deg, #020617 0%, #312e81 100%);
+  }
+  
+  .ink-shadow {
+    box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Prose enhancements */
+.prose {
+  --tw-prose-body: var(--color-on-surface-variant);
+  --tw-prose-headings: var(--color-on-surface);
+  --tw-prose-links: var(--color-primary);
+  --tw-prose-bold: var(--color-on-surface);
+  --tw-prose-code: var(--color-on-surface);
+  --tw-prose-pre-bg: var(--color-surface-container-low);
+}
+
+.prose a {
+  text-decoration: none !important;
+  transition: all 0.2s;
+}
+
+.prose a:hover {
+  color: var(--color-primary-container);
+}
+
+/* Dark mode prose is handled within the .dark block variables, 
+   but we can add specific overrides here if needed */
+.dark .prose a:hover {
+  color: var(--color-on-primary-container);
+}
+
+/* Responsive tables in prose */
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose table th {
+  background-color: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+}
+
+.dark .prose table th {
+  background-color: var(--color-surface-container);
+}
+
+.prose table tr:nth-child(even) {
+  background-color: var(--color-surface);
+}
+
+.dark .prose table tr:nth-child(even) {
+  background-color: color-mix(in srgb, var(--color-surface-container-low), transparent 50%);
+}
+
+/* Custom scrollbar for tables */
+.prose table::-webkit-scrollbar {
+  height: 6px;
+}
+
+.prose table::-webkit-scrollbar-track {
+  background: var(--color-surface-container-low);
+  border-radius: 3px;
+}
+
+.prose table::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 3px;
+}
+
+.dark .prose table::-webkit-scrollbar-track {
+  background: var(--color-surface-container-lowest);
+}
+
+.dark .prose table::-webkit-scrollbar-thumb {
+  background: var(--color-outline);
+}

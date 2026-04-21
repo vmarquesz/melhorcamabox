@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { formatDate } from '@utils/date';
+
+interface Props {
+  currentPost: any;
+  limit?: number;
+}
+
+const { currentPost, limit = 3 } = Astro.props;
+const allPosts = await getCollection('posts');
+const otherPosts = allPosts.filter(post => post.slug !== currentPost.slug);
+
+function getRelatedPosts(current: any, posts: any[], max: number) {
+  const currentTags = current.data.tags || [];
+  const currentCategories = current.data.categories || [];
+  
+  // Score posts by relevance
+  const scored = posts.map(post => {
+    const postTags = post.data.tags || [];
+    const postCategories = post.data.categories || [];
+    const tagMatches = currentTags.filter((t: string) => postTags.includes(t)).length;
+    const catMatches = currentCategories.filter((c: string) => postCategories.includes(c)).length;
+    return { post, score: tagMatches * 2 + catMatches };
+  });
+  
+  // Sort by score, then randomize ties
+  return scored
+    .sort((a, b) => b.score - a.score || Math.random() - 0.5)
+    .slice(0, max)
+    .map(s => s.post);
+}
+
+const relatedPosts = getRelatedPosts(currentPost, otherPosts, limit);
+---
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {relatedPosts.map((post) => (
+      <a href={`/${post.slug}/`} class="group cursor-pointer block">
+        <div class="aspect-video bg-surface-container-high rounded-xl overflow-hidden mb-4">
+          {post.data.image ? (
+            <Image 
+              src={post.data.image} 
+              alt={post.data.title} 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              width={400}
+              height={225}
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+             <div class="w-full h-full flex items-center justify-center text-on-surface-variant font-body">Sem Imagem</div>
+          )}
+        </div>
+        
+        {post.data.categories?.[0] && (
+          <p class="text-xs font-label text-primary font-bold uppercase tracking-wider mb-2">
+            {post.data.categories[0]}
+          </p>
+        )}
+        
+        <h4 class="font-headline font-bold text-lg group-hover:text-primary transition-colors text-on-surface line-clamp-2">
+          {post.data.title}
+        </h4>
+      </a>
+    ))}
+  </div>

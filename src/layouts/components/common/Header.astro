@@ -1,0 +1,224 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+import { siteConfig } from "@config/site";
+import menu from "@config/menu.json";
+import { Icon } from 'astro-icon/components';
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = menu.main;
+---
+
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-surface-container/80 backdrop-blur-md shadow-[0px_12px_32px_rgba(13,30,37,0.06)] dark:shadow-[0px_12px_32px_rgba(0,0,0,0.4)] dark:border-b dark:border-outline-variant/20">
+  <nav class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+    <!-- Logo -->
+    <a href="/" class="text-xl font-headline font-bold tracking-tighter text-primary dark:text-primary-fixed-dim transition-opacity hover:opacity-80">
+      {siteConfig.title}
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <div class="hidden md:flex items-center gap-8 font-headline font-medium text-sm tracking-tight">
+      {navLinks.map((link) => (
+        <div class="relative group">
+          <a
+            href={link.url}
+            class:list={[
+              "flex items-center gap-1 transition-colors duration-300 py-2",
+              currentPath === link.url || (link.url !== '/' && currentPath.startsWith(link.url))
+                ? "text-primary dark:text-primary-fixed-dim font-bold"
+                : "text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim"
+            ]}
+          >
+            {link.name}
+            {link.hasChildren && (
+              <Icon name="material-symbols:expand-more" class="w-4 h-4 transition-transform group-hover:rotate-180" />
+            )}
+          </a>
+          
+          {link.hasChildren && (
+            <div class="absolute left-0 top-full pt-2 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50">
+              <div class="bg-surface-container-lowest dark:bg-surface-container-high border border-outline-variant/20 rounded-2xl shadow-xl p-2 min-w-[220px]">
+                {link.children?.map((child) => (
+                  <a
+                    href={child.url}
+                    class="block px-4 py-2 text-sm text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-highest rounded-lg transition-colors"
+                  >
+                    {child.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- Actions: Search, Theme Toggle & Mobile Menu -->
+    <div class="flex items-center gap-2">
+      <!-- Search (Desktop only) -->
+      <div class="hidden md:flex relative items-center">
+        <button
+          id="search-toggle"
+          class="p-2 hover:bg-surface-container-low transition-colors duration-300 rounded-full group flex items-center justify-center text-primary dark:text-primary-fixed-dim"
+          aria-label="Abrir busca"
+          aria-expanded="false"
+        >
+          <Icon name="material-symbols:search" class="w-6 h-6 group-hover:scale-110 transition-transform" />
+        </button>
+
+        <!-- Search Box Overlay (Desktop) -->
+        <div
+          id="search-box-container"
+          class="absolute right-0 top-1/2 -translate-y-1/2 flex items-center bg-surface-container-lowest dark:bg-surface-container-highest border border-outline-variant/30 rounded-full overflow-hidden w-0 opacity-0 transition-all duration-300 ease-out z-10"
+        >
+          <input
+            type="text"
+            id="header-search-input"
+            placeholder="Buscar robôs..."
+            class="bg-transparent border-none focus:ring-0 text-sm py-2 pl-4 pr-10 w-full text-on-surface placeholder-on-surface-variant/40"
+            autocomplete="off"
+          />
+          <button
+            id="search-close"
+            class="absolute right-1 p-1 text-on-surface-variant/60 hover:text-on-surface transition-colors"
+            aria-label="Fechar busca"
+          >
+            <Icon name="material-symbols:close" class="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      <!-- Theme Toggle -->
+      <div class="hidden md:block">
+        <ThemeToggle />
+      </div>
+
+      <!-- Mobile menu button -->
+      <button
+        type="button"
+        id="mobile-menu-btn"
+        class="md:hidden p-2 text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low transition-colors rounded-full flex items-center justify-center relative w-10 h-10"
+        aria-label="Toggle menu"
+      >
+        <Icon name="material-symbols:menu" class="w-6 h-6 menu-icon absolute transition-all duration-300" />
+        <Icon name="material-symbols:close" class="w-6 h-6 close-icon absolute transition-all duration-300 transform scale-0 opacity-0" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <nav id="mobile-menu" class="hidden md:hidden border-t border-outline-variant/10 bg-surface/95 backdrop-blur-xl">
+    <div class="px-8 py-8 space-y-6 max-h-[70vh] overflow-y-auto">
+      {navLinks.map((link) => (
+        <div class="space-y-4">
+          <a
+            href={link.url}
+            class:list={[
+              "block font-headline font-bold text-lg transition-colors",
+              currentPath === link.url || (link.url !== '/' && currentPath.startsWith(link.url))
+                ? "text-primary dark:text-primary-fixed-dim"
+                : "text-on-surface-variant"
+            ]}
+          >
+            {link.name}
+          </a>
+          
+          {link.hasChildren && (
+            <div class="pl-4 border-l-2 border-outline-variant/20 space-y-3">
+              {link.children?.map((child) => (
+                <a
+                  href={child.url}
+                  class:list={[
+                    "block font-headline font-medium text-sm transition-colors",
+                    currentPath === child.url
+                      ? "text-primary dark:text-primary-fixed-dim"
+                      : "text-on-surface-variant/70 hover:text-primary"
+                  ]}
+                >
+                  {child.name}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+      <div class="flex items-center gap-4 pt-6 border-t border-outline-variant/10">
+        <a href="/search/" class="flex-1 flex items-center gap-3 p-4 bg-surface-container-low rounded-xl text-on-surface-variant hover:text-primary text-sm transition-colors">
+          <Icon name="material-symbols:search" class="w-6 h-6 text-primary" />
+          Buscar no guia...
+        </a>
+        <div class="p-2 bg-surface-container-low rounded-xl">
+          <ThemeToggle />
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile Menu Logic
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = mobileBtn?.querySelector('.menu-icon');
+  const closeIcon = mobileBtn?.querySelector('.close-icon');
+
+  mobileBtn?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('hidden') === false;
+    mobileBtn.setAttribute('aria-expanded', String(isOpen));
+    
+    if (isOpen) {
+      menuIcon?.classList.add('scale-0', 'opacity-0');
+      closeIcon?.classList.remove('scale-0', 'opacity-0');
+    } else {
+      menuIcon?.classList.remove('scale-0', 'opacity-0');
+      closeIcon?.classList.add('scale-0', 'opacity-0');
+    }
+  });
+
+  // Search Logic (Desktop)
+  const searchToggle = document.getElementById('search-toggle');
+  const searchBoxContainer = document.getElementById('search-box-container');
+  const headerSearchInput = document.getElementById('header-search-input') as HTMLInputElement;
+  const searchClose = document.getElementById('search-close');
+
+  searchToggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isExpanded = searchToggle.getAttribute('aria-expanded') === 'true';
+    if (!isExpanded) {
+      searchBoxContainer?.classList.remove('w-0', 'opacity-0');
+      searchBoxContainer?.classList.add('w-[280px]', 'opacity-100');
+      searchToggle.setAttribute('aria-expanded', 'true');
+      searchToggle.classList.add('opacity-0', 'invisible');
+      setTimeout(() => headerSearchInput?.focus(), 150);
+    }
+  });
+
+  searchClose?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeSearch();
+  });
+
+  const closeSearch = () => {
+    searchBoxContainer?.classList.remove('w-[280px]', 'opacity-100');
+    searchBoxContainer?.classList.add('w-0', 'opacity-0');
+    searchToggle?.setAttribute('aria-expanded', 'false');
+    searchToggle?.classList.remove('opacity-0', 'invisible');
+    if (headerSearchInput) headerSearchInput.value = '';
+  };
+
+  headerSearchInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && headerSearchInput.value.trim() !== '') {
+      window.location.href = `/search/?q=${encodeURIComponent(headerSearchInput.value.trim())}`;
+    }
+    if (e.key === 'Escape') {
+      closeSearch();
+    }
+  });
+
+  // Close search when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!searchBoxContainer?.contains(e.target as Node) && searchToggle?.getAttribute('aria-expanded') === 'true') {
+      closeSearch();
+    }
+  });
+</script>

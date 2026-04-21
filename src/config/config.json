@@ -1,0 +1,17 @@
+{
+  "site": {
+    "trailing_slash": true,
+    "favicon": "/favicon.ico"
+  },
+  "settings": {},
+  "metadata": {},
+  "params": {
+    "contact_form_action": "#"
+  },
+  "contactinfo": {
+    "name": "Guia Robô Aspirador",
+    "address": "1ª Travessa Waldemar Reis do Rego, 1833, Recife-PE, 50731-205",
+    "email": "contato@guiaroboaspirador.com.br",
+    "phone": "(81) 8622-3286"
+  }
+}

@@ -1,0 +1,14 @@
+---
+// This component exports all affiliate components to be used in MDX files
+// It will be imported in the MDX layout to make all components available without explicit imports
+
+// Import Affiliate components
+import CaixaProsContras from './affiliate/CaixaProsContras.astro';
+import ProductBox from './affiliate/ProductBox.astro';
+import SummaryList from './affiliate/SummaryList.astro';
+
+// Export all components to make them available in MDX
+export { CaixaProsContras, ProductBox, SummaryList };
+---
+
+<!-- This component doesn't render anything, it's just for exporting components -->

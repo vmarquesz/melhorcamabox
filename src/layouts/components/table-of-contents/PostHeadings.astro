@@ -1,0 +1,120 @@
+---
+import type { MarkdownHeading } from "astro";
+import type { Heading } from "./TOCHeading.astro";
+import TOCHeading from "./TOCHeading.astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+function buildToc(headings: MarkdownHeading[]) {
+  const toc: Heading[] = [];
+  const parentHeadings = new Map();
+  headings
+    .filter((h) => h.depth <= 3)
+    .forEach((h) => {
+      const heading = { ...h, subheadings: [] };
+      parentHeadings.set(heading.depth, heading);
+      if (heading.depth === 2) {
+        toc.push(heading);
+      } else {
+        const parent = parentHeadings.get(heading.depth - 1);
+        if (parent) {
+          parent.subheadings.push(heading);
+        } else {
+          // If no parent h2 exists for this h3, treat h3 as a top-level item in TOC
+          toc.push(heading);
+        }
+      }
+    });
+  return toc;
+}
+
+const { headings } = Astro.props;
+
+const tableOfContents = buildToc(headings);
+---
+
+<div class="toc-container relative bg-surface-container rounded-lg p-4 shadow-md border border-outline-variant/30">
+  <div class="flex justify-between items-center mb-3">
+    <h2 class="text-lg font-bold font-headline text-on-surface">Conteúdo</h2>
+    <button id="toc-toggle" aria-label="Toggle table of contents" aria-expanded="false" class="text-on-surface-variant hover:text-primary p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+  <div id="toc-content" class="toc-content toc-collapsed overflow-y-auto pr-2 transition-all duration-300 ease-in-out">
+    <ul class="text-sm font-body [&_li]:pt-2 list-disc underline underline-offset-4 decoration-outline-variant/30">
+      {
+        tableOfContents.map((heading) => (
+          <li class="hover:text-primary">
+            <a href={"#" + heading.slug} class="text-on-surface-variant font-medium hover:text-primary transition-colors">{heading.text}</a>
+            {heading.subheadings.length > 0 && (
+              <ul class="pl-5 list-disc">
+                {heading.subheadings.map((heading) => (
+                  <TOCHeading heading={heading} />
+                ))}
+              </ul>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<script>
+  // Simple toggle functionality for table of contents
+  document.addEventListener('DOMContentLoaded', () => {
+    const tocToggle = document.getElementById('toc-toggle');
+    const tocContent = document.getElementById('toc-content');
+    
+    if (tocToggle && tocContent) {
+      tocToggle.addEventListener('click', () => {
+        // Toggle the class instead of manipulating styles directly
+        tocContent.classList.toggle('toc-collapsed');
+        tocContent.classList.toggle('toc-expanded');
+        
+        // Update the aria-expanded attribute for accessibility
+        const isExpanded = tocContent.classList.contains('toc-expanded');
+        tocToggle.setAttribute('aria-expanded', isExpanded.toString());
+      });
+    }
+  });
+</script>
+
+<style>
+  .toc-content {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-outline-variant) transparent;
+    max-height: 500px;
+  }
+  
+  .toc-content.toc-collapsed {
+    max-height: 0;
+    overflow: hidden;
+  }
+  
+  .toc-content::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .toc-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .toc-content::-webkit-scrollbar-thumb {
+    background-color: var(--color-outline-variant);
+    border-radius: 20px;
+  }
+  
+  /* Rotate the chevron when collapsed */
+  #toc-toggle[aria-expanded="false"] svg {
+    transform: rotate(-90deg);
+  }
+  
+  #toc-toggle svg {
+    transition: transform 0.3s ease;
+  }
+</style>

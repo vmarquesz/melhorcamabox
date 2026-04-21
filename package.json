@@ -1,0 +1,28 @@
+{
+  "name": "guia-de-colchao",
+  "description": "Blog de afiliados sobre colchões criado com Astro",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "@iconify-json/material-symbols": "^1.2.67",
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/ph": "^1.2.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.16.11",
+    "astro-icon": "^1.1.5",
+    "fuse.js": "^7.1.0",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19"
+  }
+}

@@ -1,0 +1,85 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+import { siteConfig } from '@config/site';
+import { featuredCategories, slugify } from '@config/categories';
+
+// Get all blog posts
+const posts = await getCollection('posts', ({ data }) => {
+  return !data.draft;
+});
+
+const normalizeCategory = (value: string) => slugify(value);
+
+const dynamicCategories = [...new Set(posts.flatMap(post => post.data.categories || []))]
+  .map((category) => {
+    const slug = normalizeCategory(category);
+    return {
+      slug,
+      name: category,
+      icon: 'mdi:folder',
+      description: '',
+    };
+  });
+
+const mergedCategories = [...featuredCategories];
+for (const category of dynamicCategories) {
+  if (!mergedCategories.some((item) => item.slug === category.slug)) {
+    mergedCategories.push(category);
+  }
+}
+
+const categoryCounts = mergedCategories
+  .map(({ name, slug, icon }) => {
+    const postCount = posts.filter((post) =>
+      (post.data.categories || []).some((category) => normalizeCategory(category) === slug)
+    ).length;
+
+    return { name, count: postCount, slug, icon };
+  })
+  .sort((a, b) => b.count - a.count);
+---
+
+<Layout
+  title={`Categorias - ${siteConfig.title}`}
+  description="Veja todos os conteúdos organizados por categoria"
+>
+  <div class="w-full py-8">
+    <header class="mb-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        Categorias
+      </h1>
+      <p class="text-lg text-gray-700 dark:text-gray-300">
+        Navegue pelos posts do Guia Robô Aspirador por categoria
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {categoryCounts.map(({ name, count, slug, icon }) => (
+        <a
+          href={`/${slug}/`}
+          class="flex items-center justify-between p-6 bg-surface-container rounded-2xl ink-shadow hover:bg-surface-container-high transition-all border border-surface-container-high active:scale-[0.98]"
+        >
+          <div class="flex items-center">
+            <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary-container/10 text-primary mr-4">
+              <Icon name={icon} class="w-6 h-6" />
+            </div>
+            <span class="font-bold font-headline text-on-surface">
+              {name}
+            </span>
+          </div>
+          <span class="bg-primary-container/20 text-primary text-[10px] font-bold font-headline px-3 py-1 rounded-full border border-primary/10 min-w-20 text-center uppercase tracking-tighter shrink-0">
+            {count} {count === 1 ? 'post' : 'posts'}
+          </span>
+        </a>
+      ))}
+    </div>
+
+    {categoryCounts.length === 0 && (
+      <div class="text-center py-12">
+        <p class="text-on-surface-variant font-body">Nenhuma categoria encontrada.</p>
+      </div>
+    )}
+  </div>
+</Layout>

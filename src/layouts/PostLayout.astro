@@ -1,0 +1,170 @@
+---
+import { getEntry, getEntries } from 'astro:content';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import Layout from '@layouts/Layout.astro';
+import { formatDate } from '@utils/date';
+import PostHeadings from '@layouts/components/table-of-contents/PostHeadings.astro';
+import RelatedPosts from '@layouts/components/blog/RelatedPosts.astro';
+import SocialShare from '@layouts/components/blog/SocialShare.astro';
+import ReadingProgress from '@layouts/components/blog/ReadingProgress.astro';
+import Breadcrumb from '@layouts/components/common/Breadcrumb.astro';
+import { slugify } from '@config/categories';
+
+const { post, headings } = Astro.props;
+const { title, meta_title, description, image, date, categories, authors, tags, series } = post.data;
+
+const canonicalURL = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : Astro.url.pathname;
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Blog', url: '/blog/' },
+  ...(categories?.length ? [{ name: categories[0], url: `/${slugify(categories[0])}/` }] : []),
+  { name: title, url: canonicalURL }
+];
+
+
+// Get author details
+const authorEntries = authors && authors.length > 0 ? await getEntries(authors.map(id => ({ collection: 'authors', id }))) : [];
+const primaryAuthorName = authorEntries.length > 0 ? authorEntries[0].data.title : (authors?.[0] || 'Admin');
+
+let AuthorContent = null;
+if (authorEntries.length > 0) {
+  const { Content } = await authorEntries[0].render();
+  AuthorContent = Content;
+}
+---
+
+<Layout
+  title={meta_title || title}
+  description={description}
+  image={image?.src}
+  article={true}
+  canonical={canonicalURL}
+  publishDate={date}
+  author={authors?.[0] ? { name: primaryAuthorName } : undefined}
+  tags={tags}
+  categories={categories}
+  breadcrumbs={breadcrumbs}
+  wideContent={true}
+  noTopPadding={true}
+>
+  <ReadingProgress />
+
+  <!-- Breadcrumb -->
+  <div class="max-w-4xl mx-auto px-4 sm:px-8 pt-24 md:pt-32 pb-4">
+    <nav class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">
+      <a href="/" class="hover:text-primary transition-colors">Home</a>
+      <Icon name="material-symbols:chevron-right" class="w-3 h-3" />
+      <a href="/blog/" class="hover:text-primary transition-colors">Blog</a>
+      <Icon name="material-symbols:chevron-right" class="w-3 h-3" />
+      <span class="text-primary dark:text-primary-fixed-dim line-clamp-1">{title}</span>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-8 mb-12">
+    <div class="relative min-h-[400px] md:h-[500px] w-full overflow-hidden rounded-[2rem] flex items-end shadow-2xl">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10"></div>
+      {image ? (
+        <Image
+          src={image}
+          alt={title}
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] hover:scale-110"
+          width={1920}
+          height={1080}
+          widths={[640, 960, 1280, 1920]}
+          sizes="100vw"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      ) : (
+        <div class="absolute inset-0 bg-slate-900"></div>
+      )}
+      <div class="relative z-20 w-full max-w-4xl px-8 md:px-12 pb-12">
+        <span class="inline-block px-4 py-1.5 bg-primary-container/80 backdrop-blur-md text-on-primary-container text-[10px] font-bold tracking-[0.2em] uppercase mb-6 rounded-lg font-headline">
+          {categories?.[0] || 'Review'}
+        </span>
+        <h1 class="font-headline text-4xl md:text-6xl text-white mb-6 leading-[1.1] tracking-tighter font-black">
+          {title}
+        </h1>
+        <div class="flex flex-wrap items-center gap-6 text-white/80 border-t border-white/10 pt-6 font-headline text-xs font-bold uppercase tracking-widest">
+          {authorEntries.length > 0 && (
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md overflow-hidden border border-white/20">
+                {authorEntries[0].data.image ? (
+                  <Image src={authorEntries[0].data.image} alt={authorEntries[0].data.title} width={40} height={40} class="w-full h-full object-cover" />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center">
+                    <Icon name="material-symbols:person" class="w-4 h-4 text-white" />
+                  </div>
+                )}
+              </div>
+              <span>Por <strong class="text-white">{primaryAuthorName}</strong></span>
+            </div>
+          )}
+          {date && (
+            <div class="flex items-center gap-2">
+              <Icon name="material-symbols:calendar-today" class="w-4 h-4" />
+              <time datetime={date.toISOString()}>{formatDate(date)}</time>
+            </div>
+          )}
+          <div class="flex items-center gap-2">
+            <Icon name="material-symbols:schedule" class="w-4 h-4" />
+            <span>5 min de leitura</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-8 py-6 space-y-12">
+
+    {headings && headings.length > 0 && (
+      <PostHeadings headings={headings} />
+    )}
+
+    <div class="prose prose-lg dark:prose-invert prose-brand max-w-none">
+      <slot />
+    </div>
+
+
+
+    <!-- Author Bio -->
+    {authorEntries.length > 0 && authorEntries[0].data.description && (
+      <div class="flex flex-col md:flex-row items-center gap-8 bg-surface-container p-8 rounded-sm border border-outline-variant/20 mt-16">
+        <div class="w-20 h-20 rounded-full bg-surface-container-low flex items-center justify-center shrink-0">
+          {authorEntries[0].data.image ? (
+            <Image src={authorEntries[0].data.image} alt={authorEntries[0].data.title} width={80} height={80} class="rounded-full object-cover w-full h-full" />
+          ) : (
+            <Icon name="mdi:account" class="w-10 h-10 text-primary" />
+          )}
+        </div>
+        <div>
+          <h2 class="font-headline text-lg font-bold mb-1 text-on-surface">Sobre {authorEntries[0].data.title}</h2>
+          <div class="text-on-surface-variant text-sm leading-relaxed font-body">
+            {AuthorContent ? <AuthorContent /> : authorEntries[0].data.description}
+          </div>
+        </div>
+      </div>
+    )}
+
+    <SocialShare title={title} description={description} url={canonicalURL} />
+  </article>
+
+  <!-- Related Posts -->
+  <section class="bg-surface-container py-24 mb-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-8">
+      <div class="flex justify-between items-end mb-12">
+        <h3 class="font-headline text-3xl md:text-4xl">Leituras Recomendadas</h3>
+        <a class="font-label text-sm uppercase tracking-widest text-secondary border-b-2 border-secondary pb-1" href="/blog/">
+          Ver todos
+        </a>
+      </div>
+      <RelatedPosts currentPost={post} />
+    </div>
+  </section>
+</Layout>

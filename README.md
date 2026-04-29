@@ -1,11 +1,11 @@
-# Guia Perfume - Blog de Afiliados (Astro)
+# Guia de Colchão - Blog de Afiliados (Astro)
 
-Projeto de blog de afiliados focado em reviews de perfumes.
+Projeto de blog de afiliados focado em reviews de colchões.
 Stack principal: Astro + MDX + Tailwind CSS.
 
 ## Resumo do estado atual
 
-- Site ativo em: `https://guiaroboaspirador.com.br`
+- Site ativo em: `https://guiadecolchao.com.br`
 - Conteúdo principal em `src/content/posts`
 - Imagens de conteúdo em `src/assets/images`
 - Rotas de tags foram removidas do front-end
@@ -93,7 +93,7 @@ Regra de slug:
 - Se não existir `canonical`, usa o slug do arquivo (`post.slug`).
 
 Exemplo:
-- `canonical: https://guiaroboaspirador.com.br/melhor-impressora-laser/`
+- `canonical: https://guiadecolchao.com.br/melhor-colchao-espuma/`
 - rota final: `/melhor-lava-e-seca/`
 
 ## Imagens

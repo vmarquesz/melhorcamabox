@@ -1,11 +1,11 @@
 ---
 title: "Política de Privacidade"
-description: "Como o Guia Robô Aspirador cuida dos seus dados"
+description: "Como o Guia de Colchão cuida dos seus dados"
 slug: "politica-de-privacidade"
 draft: false
 ---
 
-A sua privacidade é importante para nós. É política do Guia Robô Aspirador respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site [Guia Robô Aspirador](https://guiaroboaspirador.com.br), e outros sites que possuímos e operamos.
+A sua privacidade é importante para nós. É política do Guia de Colchão respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site [Guia de Colchão](https://guiadecolchao.com.br), e outros sites que possuímos e operamos.
 
 Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.
 
@@ -22,15 +22,15 @@ O uso continuado de nosso site será considerado como aceitação de nossas prá
 * O serviço Google AdSense que usamos para veicular publicidade usa um cookie DoubleClick para veicular anúncios mais relevantes em toda a Web e limitar o número de vezes que um determinado anúncio é exibido para você.
 * Para mais informações sobre o Google AdSense, consulte as FAQs oficiais sobre privacidade do Google AdSense.
 * Utilizamos anúncios para compensar os custos de funcionamento deste site e fornecer financiamento para futuros desenvolvimentos. Os cookies de publicidade comportamental usados por este site foram projetados para garantir que você forneça os anúncios mais relevantes sempre que possível, rastreando anonimamente seus interesses e apresentando coisas semelhantes que possam ser do seu interesse.
-* Vários parceiros anunciam em nosso nome e os cookies de rastreamento de afiliados simplesmente nos permitem ver se nossos clientes acessaram o site através de um dos sites de nossos parceiros, para que possamos creditá-los adequadamente e, quando aplicável, permitir que nossos parceiros afiliados ofereçam qualquer promoção que pode fornecê-lo para fazer uma compra.
+* Vários parceiros anunciam em nosso nome e os cookies de rastreamento de afiliados simplesmente nos permitem ver se nossos clientes acessaram o site através de um dos sites de nossos parceiros, para que possamos creditá-los adequadamente e, quando aplicável, permitir que nossos parceiros afiliados ofereçam qualquer promoção que pode fornecer-o para fazer uma compra.
 
 ### Compromisso do Usuário
 
-O usuário se compromete a fazer uso adequado dos conteúdos e da informação que o Guia Robô Aspirador oferece no site e com caráter enunciativo, mas não limitativo:
+O usuário se compromete a fazer uso adequado dos conteúdos e da informação que o Guia de Colchão oferece no site e com caráter enunciativo, mas não limitativo:
 
 * A) Não se envolver em atividades que sejam ilegais ou contrárias à boa fé e à ordem pública;
 * B) Não difundir propaganda ou conteúdo de natureza racista, xenofóbica, jogos de sorte ou azar, qualquer tipo de pornografia ilegal, de apologia ao terrorismo ou contra os direitos humanos;
-* C) Não causar danos aos sistemas físicos e lógicos do Guia Robô Aspirador, de seus fornecedores ou terceiros, para introduzir ou disseminar vírus informáticos ou quaisquer outros sistemas de hardware ou software que sejam capazes de causar danos anteriormente mencionados.
+* C) Não causar danos aos sistemas físicos e lógicos do Guia de Colchão, de seus fornecedores ou terceiros, para introduzir ou disseminar vírus informáticos ou quaisquer outros sistemas de hardware ou software que sejam capazes de causar danos anteriormente mencionados.
 
 ### Mais informações
 

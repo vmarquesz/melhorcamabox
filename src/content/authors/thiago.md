@@ -1,13 +1,13 @@
 ---
 title: "Thiago Gonçalves Lima"
-meta_title: "Thiago Gonçalves Lima | Fundador do Guia Robô Aspirador"
+meta_title: "Thiago Gonçalves Lima | Fundador do Guia de Colchão"
 image: "../../assets/images/authors/thiago-lima.webp"
-description: "Fundador e especialista em tecnologia doméstica, dedicado a simplificar a escolha do seu próximo robô aspirador."
+description: "Fundador e especialista em sono e conforto, dedicado a simplificar a escolha do seu próximo colchão."
 social:
-  facebook: "https://www.facebook.com/guiaroboaspirador"
-  twitter: "https://twitter.com/guiaroboaspirador"
-  instagram: "https://instagram.com/guiaroboaspirador"
+  facebook: "https://www.facebook.com/guiadecolchao"
+  twitter: "https://twitter.com/guiadecolchao"
+  instagram: "https://instagram.com/guiadecolchao"
 draft: false
 ---
 
-Thiago Gonçalves Lima é o fundador do Guia Robô Aspirador, um entusiasta de automação residencial que busca traduzir especificações técnicas complexas em recomendações práticas para o dia a dia. Seu objetivo é ajudar você a encontrar a tecnologia perfeita para manter sua casa impecável com o mínimo de esforço.
+Thiago Gonçalves Lima é o fundador do Guia de Colchão, um entusiasta de ergonomia e qualidade de sono que busca traduzir especificações técnicas complexas em recomendações práticas para o dia a dia. Seu objetivo é ajudar você a encontrar o colchão perfeito para noites bem dormidas e despertar sem dores.

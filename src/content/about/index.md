@@ -40,7 +40,7 @@ A honestidade é o motor que move o nosso projeto. O Guia de Colchão é partici
 
 Por trás das análises técnicas, existe um entusiasta focado em qualidade de sono e bem-estar.
 
-**Thiago Gonçalves Lima** fundou o site após perceber a carência de informações técnicas honestas em português sobre o mercado de colchões. Entusiasta de ergonomia e saúde do sono, Thiago dedica-se a dissecar as fichas técnicas e testar os materiais para garantir que você faça o investimento certo para o seu descanso.
+**Leonardo Correia Pinto** fundou o site após perceber a carência de informações técnicas honestas em português sobre o mercado de colchões. Entusiasta de ergonomia e saúde do sono, Leonardo dedica-se a dissecar as fichas técnicas e testar os materiais para garantir que você faça o investimento certo para o seu descanso.
 
 ---
 

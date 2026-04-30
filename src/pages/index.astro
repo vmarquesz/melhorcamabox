@@ -152,34 +152,19 @@ const buyerSteps = [
           </a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {latestPosts.map((post, i) => {
-            const isWinner = i === 1;
-            return (
-              <article class:list={[
-                "bg-surface-container-lowest dark:bg-surface-container-high rounded-2xl overflow-hidden transition-all group",
-                isWinner 
-                  ? "shadow-xl border-2 border-primary-container dark:border-primary-container/40 scale-[1.02] z-10" 
-                  : "shadow-sm border border-outline-variant/10 dark:border-outline-variant/10 hover:shadow-xl hover:border-primary/20 dark:hover:border-primary-container/40"
-              ]}>
-                <a href={`/${post.slug}/`} class="block h-48 overflow-hidden relative">
-                  {post.data.image && (
-                    <Image 
-                      src={post.data.image} 
-                      alt={post.data.title}
-                      width={640}
-                      height={400}
-                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  )}
-                  {isWinner && (
-                    <div class="absolute top-0 right-0 bg-primary-container dark:bg-primary text-on-primary dark:text-on-primary px-4 py-1 rounded-bl-xl text-sm font-medium">
-                      Melhor Escolha
-                    </div>
-                  )}
-                  <div class="absolute top-4 left-4 bg-surface-container-lowest/90 dark:bg-surface-container-high/90 backdrop-blur px-3 py-1 rounded-lg text-primary dark:text-primary-fixed-dim font-bold text-sm shadow-sm">
-                    NOVO
-                  </div>
-                </a>
+          {latestPosts.map((post) => (
+            <article class="bg-surface-container-lowest dark:bg-surface-container-high rounded-2xl overflow-hidden transition-all group shadow-sm border border-outline-variant/10 dark:border-outline-variant/10 hover:shadow-xl hover:border-primary/20 dark:hover:border-primary-container/40">
+              <a href={`/${post.slug}/`} class="block h-48 overflow-hidden relative">
+                {post.data.image && (
+                  <Image 
+                    src={post.data.image} 
+                    alt={post.data.title}
+                    width={640}
+                    height={400}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                )}
+              </a>
                 <div class="p-8">
                   <p class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant dark:text-on-surface-variant mb-4">
                     {post.data.categories?.[0] || 'Review'}
@@ -195,8 +180,7 @@ const buyerSteps = [
                   </a>
                 </div>
               </article>
-            );
-          })}
+          ))}
         </div>
       </div>
     </section>

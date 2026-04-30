@@ -44,7 +44,7 @@ export const featuredCategories: FeaturedCategory[] = [
   },
   {
     slug: "colchoes-na-caixa",
-    name: 'Colchões "Na Caixa"',
+    name: 'Colchões Na Caixa',
     description: "Comodidade e qualidade: colchões compactados que chegam na sua porta.",
     icon: "ph:package",
   },

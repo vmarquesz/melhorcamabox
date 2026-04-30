@@ -1,153 +1,168 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import { siteConfig } from "@config/site";
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
+import Layout from '@layouts/Layout.astro';
+import { siteConfig } from '@config/site';
 import { Icon } from 'astro-icon/components';
-import heroImg from "../assets/images/hero-sobre.webp";
-import labImg from "../assets/images/lab-testes.webp";
-import founderImg from "../assets/images/authors/thiago-lima.webp";
+import sobreHeroImg from '../assets/images/sobre-hero.webp';
+import authorImg from '../assets/images/team-1.webp';
 
-const title = "Sobre Nós";
-const description = "Conheça a história e os valores por trás do Guia de Colchão.";
+const trustCards = [
+  {
+    icon: 'material-symbols:verified-user',
+    title: 'Independência Editorial',
+    description: 'Não aceitamos pagamentos para alterar notas ou reviews. Nossa receita vem de comissões que não influenciam nosso veredito final.',
+  },
+  {
+    icon: 'material-symbols:science',
+    title: 'Testes Laboratoriais',
+    description: 'Cada produto é submetido a rigorosos testes de suporte de borda, isolamento de movimento e regulação de temperatura em ambiente controlado.',
+  },
+  {
+    icon: 'material-symbols:groups',
+    title: 'Experiência Real',
+    description: 'Além das máquinas, nossos especialistas de diferentes biotipos testam os colchões em casa para garantir uma perspectiva humana e prática.',
+  },
+];
+
+const authorSocial = [
+  { icon: 'mdi:instagram', url: 'https://instagram.com/guiadecolchao', label: 'Instagram' },
+  { icon: 'mdi:twitter', url: 'https://twitter.com/guiadecolchao', label: 'Twitter' },
+  { icon: 'mdi:facebook', url: 'https://www.facebook.com/guiadecolchao', label: 'Facebook' },
+];
 ---
 
 <Layout
-  title={`${title} | ${siteConfig.title}`}
-  description={description}
+  title={`Sobre Nós | ${siteConfig.title}`}
+  description="Conheça a equipe por trás do Guia de Colchão. Especialistas dedicados a ajudar você a encontrar o colchão perfeito através de análises técnicas rigorosas."
   wideContent={true}
   noTopPadding={true}
 >
-  <main class="bg-background text-on-surface font-body">
+  <main>
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-32 md:pb-48 overflow-hidden">
-      <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="max-w-3xl">
-          <span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-secondary-fixed text-on-secondary-fixed text-xs font-bold font-label tracking-widest uppercase">
-            A Nossa História
-          </span>
-          <h1 class="text-6xl md:text-8xl font-headline font-extrabold text-primary leading-[0.9] tracking-tighter mb-8">
-            Documentando o sono de qualidade.
-          </h1>
-          <p class="text-xl text-on-surface-variant leading-relaxed mb-12 max-w-2xl italic font-light">
-            O Guia de Colchão nasceu da necessidade de transformar a complexidade do mercado de colchões em clareza editorial para o seu descanso.
+    <section class="relative h-[500px] md:h-[600px] flex items-center overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <Image 
+          class="w-full h-full object-cover"
+          src={sobreHeroImg}
+          alt="Quarto sereno e minimalista com colchão premium"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent dark:from-surface dark:via-surface/80"></div>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
+        <div class="max-w-2xl">
+          <span class="inline-block text-primary dark:text-primary-fixed-dim font-bold tracking-widest text-sm mb-4 uppercase">Propósito & Excelência</span>
+          <h1 class="text-4xl md:text-5xl lg:text-[3rem] font-extrabold text-primary dark:text-primary-fixed-dim mb-6 leading-tight tracking-tight">Nossa Missão</h1>
+          <p class="text-lg md:text-xl text-on-surface-variant dark:text-on-surface-variant leading-relaxed">
+            Nascemos da necessidade de clareza em um mercado saturado. No Guia de Colchão, nossa missão é democratizar o acesso a um sono de alta performance através de análises técnicas rigorosas e imparciais.
           </p>
         </div>
       </div>
-      <div class="absolute top-0 right-0 w-full md:w-1/2 h-full -z-0 bg-surface-container-low rounded-bl-[120px] overflow-hidden opacity-20 md:opacity-100">
-        <Image 
-          class="w-full h-full object-cover opacity-90 brightness-[0.9] transition-transform duration-1000 hover:scale-105" 
-          src={heroImg} 
-          alt="Colchão premium em design minimalista"
-        />
-      </div>
     </section>
 
-    <!-- Mission & Ethics (Bento Style) -->
-    <section class="py-24 bg-surface">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-          <!-- Nossa Missão -->
-          <div class="md:col-span-7 bg-surface-container-lowest dark:bg-surface-container-high/50 p-12 rounded-2xl shadow-[0px_4px_24px_rgba(13,30,37,0.04)]">
-            <Icon name="material-symbols:target" class="w-9 h-9 text-primary" />
-            <h2 class="text-4xl font-headline font-bold text-primary dark:text-primary-fixed-dim mb-6">Nossa Missão</h2>
-            <p class="text-lg text-on-surface-variant leading-relaxed">
-              Nossa missão é simples, mas tecnicamente rigorosa: democratizar o acesso a informações de qualidade sobre colchões e sono. No Guia de Colchão, não apenas listamos características; analisamos a firmeza, os materiais, a durabilidade e o real conforto que cada modelo entrega. Queremos que cada leitor encontre o colchão perfeito para noites bem dormidas.
+    <!-- Authority & Methodology Section -->
+    <section class="py-16 md:py-20 bg-white dark:bg-surface">
+      <div class="max-w-[720px] mx-auto px-6 md:px-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary-fixed-dim mb-8 text-center tracking-tight">Autoridade no Descanso</h2>
+        <div class="space-y-6 text-on-surface-variant dark:text-on-surface-variant leading-relaxed">
+          <p class="text-base md:text-lg">
+            Desde nossa fundação, o Guia de Colchão se posicionou como o porto seguro para o consumidor que busca mais do que apenas uma superfície macia. Entendemos que o sono é o pilar fundamental da saúde física e mental, e por isso, tratamos cada review como um diagnóstico técnico.
+          </p>
+          <p class="text-base md:text-lg">
+            Nossa <span class="text-primary dark:text-primary-fixed-dim font-semibold">metodologia de testes</span> não se baseia apenas no toque. Utilizamos sensores de pressão, câmeras térmicas para medir a dissipação de calor e testes de durabilidade mecânica que simulam anos de uso contínuo. Cada colchão que entra em nosso laboratório passa por 200 horas de avaliação antes de receber uma nota final.
+          </p>
+          <div class="bg-surface-container-low dark:bg-surface-container-high p-8 rounded-xl border-l-4 border-primary dark:border-primary-container my-10">
+            <p class="italic text-lg text-primary dark:text-primary-fixed-dim leading-relaxed">
+              "Nossa única lealdade é com o seu sono. Se um colchão não entrega o que promete, nós seremos os primeiros a dizer."
             </p>
+            <p class="mt-4 text-sm font-medium text-on-surface dark:text-on-surface">— Equipe {siteConfig.title}</p>
           </div>
-          <!-- Trust Stat -->
-          <div class="md:col-span-5 bg-primary-container p-12 rounded-2xl flex flex-col justify-center text-on-primary shadow-xl">
-            <div class="text-6xl md:text-7xl font-headline font-black mb-2">500+</div>
-            <div class="text-xl font-label text-on-primary-container">Modelos Avaliados</div>
-            <p class="mt-4 text-sm opacity-80">Testes rigorosos de firmeza, suporte e durabilidade aplicados a cada colchão_reviewado.</p>
-          </div>
-          <!-- Transparência Editorial -->
-          <div class="md:col-span-12 bg-surface-container-low dark:bg-surface-container-high/30 p-12 rounded-2xl grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 class="text-4xl font-headline font-bold text-primary dark:text-primary-fixed-dim mb-6">Transparência Editorial</h2>
-              <p class="text-lg text-on-surface-variant leading-relaxed mb-6">
-                A confiança é o nosso alicerce mais sólido. No Guia de Colchão, mantemos uma separação total entre nossa equipe de testes e parcerias comerciais.
-              </p>
-              <ul class="space-y-4">
-                <li class="flex items-start gap-3">
-                  <Icon name="material-symbols:check-circle" class="w-5 h-5 text-primary dark:text-primary-fixed-dim" />
-                  <span class="font-bold text-primary dark:text-primary-fixed-dim">Testes Práticos Reais:</span> 
-                  <span class="text-on-surface-variant">Mínimo de 30 dias de uso contínuo por review.</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <Icon name="material-symbols:check-circle" class="w-5 h-5 text-primary dark:text-primary-fixed-dim" />
-                  <span class="font-bold text-primary dark:text-primary-fixed-dim">Independência de Marca:</span> 
-                  <span class="text-on-surface-variant">Nenhuma marca dita o resultado de nossas análises.</span>
-                </li>
-              </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Trust Us (Bento Grid Style) -->
+    <section class="py-16 md:py-20 bg-surface-bright dark:bg-surface-container-low">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary-fixed-dim mb-4 tracking-tight">Por que confiar em nós?</h2>
+          <p class="text-on-surface-variant dark:text-on-surface-variant max-w-2xl mx-auto">Nossos pilares de integridade garantem que você receba informações precisas, independentes e baseadas em dados reais.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {trustCards.map((card) => (
+            <div class="bg-surface-container-lowest dark:bg-surface-container-high p-8 rounded-xl shadow-[0px_4px_20px_rgba(30,58,138,0.04)] dark:shadow-[0px_4px_20px_rgba(0,0,0,0.3)] border border-outline-variant/10 dark:border-outline-variant/10 hover:shadow-xl transition-shadow duration-300">
+              <div class="w-12 h-12 bg-primary-container/10 dark:bg-primary-container/20 rounded-lg flex items-center justify-center mb-6">
+                <Icon name={card.icon} class="w-6 h-6 text-primary dark:text-primary-fixed-dim" />
+              </div>
+              <h3 class="text-xl font-semibold text-primary dark:text-primary-fixed-dim mb-4">{card.title}</h3>
+              <p class="text-on-surface-variant dark:text-on-surface-variant text-base leading-relaxed">{card.description}</p>
             </div>
-            <div class="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
-              <Image class="w-full h-full object-cover" src={labImg} alt="Laboratório de testes de colchões" />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- About the Author -->
+    <section class="py-16 md:py-20 bg-white dark:bg-surface">
+      <div class="max-w-5xl mx-auto px-6 md:px-12">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary-fixed-dim mb-4 tracking-tight">Quem faz o Guia de Colchão</h2>
+        </div>
+        <div class="bg-surface-container-low dark:bg-surface-container-high rounded-2xl p-8 md:p-12 shadow-[0px_4px_20px_rgba(30,58,138,0.04)] dark:shadow-[0px_4px_20px_rgba(0,0,0,0.3)] border border-outline-variant/10 dark:border-outline-variant/10">
+          <div class="flex flex-col md:flex-row items-center gap-10">
+            <div class="flex-shrink-0">
+              <Image
+                class="w-56 h-56 rounded-full object-cover ring-4 ring-primary/10 dark:ring-primary-container/30 ring-offset-4 dark:ring-offset-surface"
+                src={authorImg}
+                alt="Leonardo Correia Pinto"
+                width={224}
+                height={224}
+              />
+            </div>
+            <div class="flex-1 text-center md:text-left">
+              <h3 class="text-2xl md:text-3xl font-bold text-primary dark:text-primary-fixed-dim mb-2">Leonardo Correia Pinto</h3>
+              <p class="text-secondary dark:text-secondary-fixed-dim font-medium uppercase tracking-wider text-sm mb-6">Fundador & Especialista em Sono</p>
+              <p class="text-on-surface-variant dark:text-on-surface-variant leading-relaxed mb-6">
+                Leonardo é o fundador do Guia de Colchão, um entusiasta de ergonomia e qualidade de sono que busca traduzir especificações técnicas complexas em recomendações práticas para o dia a dia.
+              </p>
+              <div class="bg-primary/5 dark:bg-primary-container/10 p-6 rounded-xl border-l-4 border-primary dark:border-primary-container mb-6">
+                <p class="italic text-primary dark:text-primary-fixed-dim leading-relaxed">
+                  "Nossa única lealdade é com o seu sono. Se um colchão não entrega o que promete, nós seremos os primeiros a dizer."
+                </p>
+              </div>
+              <div class="flex items-center gap-4 justify-center md:justify-start mb-6">
+                {authorSocial.map((social) => (
+                  <a
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 rounded-full bg-surface-container dark:bg-surface-container-high flex items-center justify-center text-primary dark:text-primary-fixed-dim hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-on-primary transition-all"
+                    aria-label={social.label}
+                  >
+                    <Icon name={social.icon} class="w-5 h-5" />
+                  </a>
+                ))}
+              </div>
+              <a href="/authors/leonardo/" class="inline-flex items-center gap-2 text-primary dark:text-primary-fixed-dim font-semibold hover:gap-3 transition-all">
+                Ver artigos do autor <Icon name="material-symbols:arrow-forward" class="w-4 h-4" />
+              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Founder Bio -->
-    <section class="py-24 bg-surface-container-low dark:bg-surface-container-high/30">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
-          <div class="w-full md:w-1/3">
-            <div class="relative">
-              <div class="absolute -top-4 -left-4 w-24 h-24 bg-tertiary-fixed rounded-2xl -z-10"></div>
-              <Image class="w-full aspect-[4/5] object-cover rounded-2xl shadow-xl transition-transform duration-700 hover:scale-[1.02]" src={founderImg} alt="Leonardo Correia Pinto - Fundador do Guia de Colchão" />
-              <div class="absolute -bottom-6 -right-6 p-6 bg-surface-container-lowest dark:bg-surface-container-high rounded-2xl shadow-2xl">
-                <p class="font-headline font-bold text-primary dark:text-primary-fixed-dim text-lg leading-none">Leonardo Correia Pinto</p>
-                <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mt-2">Fundador & Editor-chefe</p>
-              </div>
-            </div>
-          </div>
-          <div class="w-full md:w-2/3">
-            <h3 class="text-4xl md:text-5xl font-headline font-bold text-primary dark:text-primary-fixed-dim mb-8 tracking-tighter">Por que confiar em nós?</h3>
-            <div class="space-y-6 text-lg text-on-surface-variant leading-relaxed">
-              <p>
-                Com mais de uma década pesquisando o mercado de colchões e bem-estar, Leonardo fundou o Guia de Colchão ao perceber que o mercado estava inundado de promessas de marketing vazias.
-              </p>
-              <p class="italic">
-                "Um colchão não é apenas um móvel; é o investimento mais importante para sua saúde e produtividade. Ele precisa oferecer suporte adequado, conforto térmico e durabilidade real. Se o material cede rápido, o preço barato sai caro. Avaliamos cada detalhe."
-              </p>
-              <div class="pt-6 flex flex-wrap gap-4">
-                <div class="bg-surface-container-highest dark:bg-surface-container-high/80 px-4 py-2 rounded-lg flex items-center gap-2">
-                  <Icon name="material-symbols:verified-user" class="w-4 h-4" />
-                  <span class="text-sm font-bold font-headline">Expertise em Sono</span>
-                </div>
-                <div class="bg-surface-container-highest dark:bg-surface-container-high/80 px-4 py-2 rounded-lg flex items-center gap-2">
-                  <Icon name="material-symbols:precision-manufacturing" class="w-4 h-4" />
-                  <span class="text-sm font-bold font-headline">Critério de Qualidade</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Values Banner -->
-    <section class="py-24 mb-20 lg:mb-32">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="bg-surface-container-lowest dark:bg-surface-container-high/50 rounded-3xl p-12 md:p-20 text-center shadow-[0px_12px_32px_rgba(13,30,37,0.06)] border border-outline-variant/10">
-          <h2 class="text-4xl font-headline font-bold text-primary dark:text-primary-fixed-dim mb-16">Nossos Valores Fundamentais</h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
-            <div>
-              <div class="text-4xl font-headline font-black text-primary-container dark:text-primary-fixed-dim mb-4 opacity-30">01.</div>
-              <h3 class="font-bold text-xl mb-3 text-primary dark:text-primary-fixed-dim">Exatidão</h3>
-              <p class="text-sm text-on-surface-variant leading-relaxed">Dados empíricos superam opiniões subjetivas em todos os nossos comparativos de conforto e durabilidade.</p>
-            </div>
-            <div>
-              <div class="text-4xl font-headline font-black text-primary-container dark:text-primary-fixed-dim mb-4 opacity-30">02.</div>
-              <h3 class="font-bold text-xl mb-3 text-primary dark:text-primary-fixed-dim">Acessibilidade</h3>
-              <p class="text-sm text-on-surface-variant leading-relaxed">Explicamos tecnologias como molas ensacadas, espuma viscoelástica e latex de forma clara e compreensível.</p>
-            </div>
-            <div>
-              <div class="text-4xl font-headline font-black text-primary-container dark:text-primary-fixed-dim mb-4 opacity-30">03.</div>
-              <h3 class="font-bold text-xl mb-3 text-primary dark:text-primary-fixed-dim">Integridade</h3>
-              <p class="text-sm text-on-surface-variant leading-relaxed">Mantemos nosso selo de total transparência editorial em 100% de nossas recomendações.</p>
-            </div>
+    <!-- CTA Section -->
+    <section class="py-16 md:py-20 px-6">
+      <div class="max-w-5xl mx-auto bg-primary dark:bg-primary-container rounded-3xl p-12 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary-container/30 to-transparent"></div>
+        <div class="relative z-10">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 tracking-tight">Pronto para transformar seu descanso?</h2>
+          <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto">Explore nossos reviews detalhados e encontre o colchão que vai mudar suas manhãs para sempre.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a class="bg-white text-primary dark:text-on-primary px-8 py-4 rounded-xl font-bold hover:bg-slate-100 dark:hover:bg-slate-200 transition-colors active:scale-95 duration-200" href="/blog/">Ver Últimos Reviews</a>
+            <a class="border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors active:scale-95 duration-200" href="/guias-de-compra/">Guia de Compra</a>
           </div>
         </div>
       </div>

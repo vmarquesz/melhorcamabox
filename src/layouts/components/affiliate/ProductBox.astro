@@ -9,14 +9,14 @@ interface Props {
 const { title, image, link, description } = Astro.props;
 ---
 
-<div class="product-box not-prose my-12 bg-surface-container-lowest dark:bg-surface-container-high/30 rounded-[2rem] border border-outline-variant/10 grid grid-cols-1 md:grid-cols-[260px_1fr] md:gap-12 items-center p-8 md:p-10 shadow-[0px_12px_32px_rgba(13,30,37,0.06)] transition-transform duration-500 hover:scale-[1.01]">
+<div class="product-box not-prose my-12 bg-surface-container-lowest dark:bg-surface-container-high/30 rounded-xl border border-outline-variant/10 dark:border-outline-variant/10 grid grid-cols-1 md:grid-cols-[260px_1fr] md:gap-12 items-center p-8 md:p-10 shadow-[0px_4px_20px_rgba(30,58,138,0.04)] dark:shadow-[0px_4px_20px_rgba(0,0,0,0.3)] transition-all duration-300 hover:shadow-xl hover:border-primary/20 dark:hover:border-primary-container/40">
   
   <!-- Left Column: Image -->
-  <a href={link} target="_blank" rel="nofollow sponsored" class="group w-full max-w-[260px] mx-auto mb-8 md:mb-0 bg-white rounded-2xl shadow-sm p-6 flex items-center justify-center aspect-square shrink-0 hover:shadow-xl transition-all duration-300">
+  <a href={link} target="_blank" rel="nofollow sponsored" class="group w-full max-w-[260px] mx-auto mb-8 md:mb-0 bg-white rounded-xl shadow-sm p-6 flex items-center justify-center aspect-square shrink-0 hover:shadow-md transition-all duration-300">
     <img 
       src={image} 
       alt={title} 
-      class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" 
+      class="max-h-full object-contain transition-transform duration-300 group-hover:scale-105" 
       loading="lazy"
       width="260"
       height="260"
@@ -29,13 +29,13 @@ const { title, image, link, description } = Astro.props;
       href={link} 
       target="_blank" 
       rel="nofollow sponsored" 
-      class="font-headline text-3xl md:text-4xl font-extrabold text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity leading-[1.1] mb-6 tracking-tighter italic"
+      class="font-headline text-2xl md:text-3xl font-bold text-primary dark:text-primary-fixed-dim hover:text-primary-container dark:hover:text-primary transition-colors leading-tight mb-6 tracking-tight"
     >
       {title}
     </a>
     
     {description && (
-      <p class="font-body text-on-surface-variant text-base md:text-lg leading-relaxed mb-8 max-w-xl">
+      <p class="font-body text-on-surface-variant dark:text-on-surface-variant text-base md:text-lg leading-relaxed mb-8 max-w-xl">
         {description}
       </p>
     )}
@@ -44,7 +44,7 @@ const { title, image, link, description } = Astro.props;
       href={link} 
       target="_blank" 
       rel="nofollow sponsored" 
-      class="inline-flex items-center justify-center w-full sm:w-auto bg-primary text-on-primary px-12 py-5 rounded-2xl font-bold font-headline hover:bg-primary-container hover:!text-white hover:shadow-2xl hover:-translate-y-1 transition-all text-sm uppercase tracking-[0.2em]"
+      class="inline-flex items-center justify-center w-full sm:w-auto bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container px-10 py-4 rounded-lg font-bold font-headline hover:bg-primary-container dark:hover:bg-primary-fixed hover:text-on-primary dark:hover:text-on-primary-container hover:shadow-lg transition-all text-sm uppercase tracking-[0.15em]"
     >
       Ver Preço na Amazon
     </a>

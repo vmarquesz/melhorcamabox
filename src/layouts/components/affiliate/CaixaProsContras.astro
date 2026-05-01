@@ -25,8 +25,8 @@
   .caixa-pros-contras ul {
     background-color: var(--color-surface-container-lowest);
     border: 1px solid var(--color-outline-variant);
-    border-radius: 2rem;
-    padding: 4.5rem 2rem 2rem;
+    border-radius: 0.75rem;
+    padding: 3.5rem 2rem 2rem;
     list-style: none;
     margin: 0;
     height: 100%;
@@ -35,7 +35,7 @@
     gap: 0.75rem;
     position: relative;
     overflow: hidden;
-    box-shadow: 0px 12px 32px rgba(13, 30, 37, 0.04);
+    box-shadow: 0px 4px 20px rgba(30, 58, 138, 0.04);
   }
 
   .caixa-pros-contras ul {
@@ -45,6 +45,7 @@
   :is(.dark) .caixa-pros-contras ul {
     background-color: var(--color-surface-container-low);
     border-color: var(--color-outline-variant);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
   }
 
   /* Posicionamento das colunas */
@@ -67,10 +68,9 @@
     gap: 0.75rem;
     font-size: 1.25rem; 
     font-family: var(--font-headline);
-    font-weight: 900;
-    letter-spacing: -0.03em;
+    font-weight: 700;
+    letter-spacing: -0.01em;
     text-transform: uppercase;
-    font-style: italic;
   }
   
   /* Prós - Verde tecnológico */
@@ -120,7 +120,7 @@
     font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.6;
-    font-weight: 500;
+    font-weight: 400;
     margin: 0 !important;
   }
   
@@ -130,7 +130,7 @@
     margin: 0 !important;
     padding: 0 !important;
     line-height: 1.6 !important;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
     font-size: 1rem !important;
     color: var(--color-on-surface) !important;
     font-family: var(--font-body) !important;
@@ -175,7 +175,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 6px;
+    height: 4px;
     background: #008573;
   }
   :is(.dark) .caixa-pros-contras ul:nth-of-type(1)::before {
@@ -188,7 +188,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 6px;
+    height: 4px;
     background: var(--color-error);
   }
 </style>

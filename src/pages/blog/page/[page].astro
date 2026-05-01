@@ -5,6 +5,7 @@ import PostCard from '@components/blog/PostCard.astro';
 import Pagination from '@components/common/Pagination.astro';
 import { getPagination } from '@utils/pagination';
 import { siteConfig } from '@config/site';
+import { Icon } from 'astro-icon/components';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => {
@@ -56,13 +57,21 @@ const paginatedPosts = posts.slice(startIndex, endIndex);
   description={`Explore nossos artigos e reviews - Página ${currentPage}`}
   noindex={true}
 >
-  <main class="w-full py-8">
+  <main class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
+    <nav class="flex items-center gap-2 text-sm font-medium text-on-surface-variant mb-8">
+      <a href="/" class="hover:text-primary transition-colors">Home</a>
+      <Icon name="material-symbols:chevron-right" class="w-4 h-4" />
+      <a href="/blog/" class="hover:text-primary transition-colors">Blog</a>
+      <Icon name="material-symbols:chevron-right" class="w-4 h-4" />
+      <span class="text-on-surface-variant/60">Página {currentPage}</span>
+    </nav>
+
     <header class="mb-12">
-      <h1 class="text-4xl md:text-7xl font-extrabold font-headline tracking-tighter text-on-surface mb-6">
+      <h1 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary-fixed-dim tracking-tight mb-4">
         Blog
       </h1>
-      <p class="text-xl text-on-surface-variant font-body mb-2 leading-relaxed">
-        Página {currentPage} de {totalPages} - Guia completo de Impressão e Suprimentos
+      <p class="text-lg text-on-surface-variant dark:text-on-surface-variant max-w-2xl">
+        Página {currentPage} de {totalPages} — Reviews e guias de colchões
       </p>
     </header>
     

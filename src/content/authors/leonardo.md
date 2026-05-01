@@ -1,7 +1,7 @@
 ---
 title: "Leonardo Correia Pinto"
 meta_title: "Leonardo Correia Pinto | Fundador do Guia de Colchão"
-image: "../../assets/images/team-1.webp"
+image: "../../assets/images/authors/leonardo.webp"
 description: "Fundador e especialista em sono e conforto, dedicado a simplificar a escolha do seu próximo colchão."
 social:
   facebook: "https://www.facebook.com/guiadecolchao"

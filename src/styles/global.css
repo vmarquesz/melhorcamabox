@@ -143,8 +143,10 @@
     transition: all 0.2s;
   }
   
-  .prose-brand a:hover {
-    color: var(--color-primary-container);
+  @layer base {
+    .prose-brand a:hover {
+      color: var(--color-primary-container);
+    }
   }
   
   .prose-brand p, .prose-brand li {
@@ -261,12 +263,14 @@ body {
   transition: all 0.2s;
 }
 
-.prose a:hover {
-  color: var(--color-primary-container);
-}
+@layer base {
+  .prose a:hover {
+    color: var(--color-primary-container);
+  }
 
-.dark .prose a:hover {
-  color: var(--color-on-primary-container);
+  .dark .prose a:hover {
+    color: var(--color-on-primary-container);
+  }
 }
 
 /* Responsive tables in prose */

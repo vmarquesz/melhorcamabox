@@ -8,7 +8,7 @@
     }
   </style>
   <rect class="bg" width="32" height="32" rx="7"/>
-  <g transform="translate(4, 4)">
+  <svg x="3" y="4" width="26" height="24" viewBox="3.5 4.5 17 15">
     <path class="icon" d="M7 19H6l-.65-2H4v-5.025q0-.825.588-1.4T6 10V7q0-.825.588-1.412T8 5h8q.825 0 1.413.588T18 7v3q.825 0 1.413.588T20 12v5h-1.35L18 19h-1l-.65-2h-8.7zm6-9h3V7h-3zm-5 0h3V7H8z"/>
-  </g>
+  </svg>
 </svg>

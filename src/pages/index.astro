@@ -25,63 +25,68 @@ const categories = [
     href: '/melhores-marcas/',
   },
   {
-    name: 'Guias por Tamanho',
-    icon: 'ph:ruler',
-    href: '/guias-por-tamanho/',
+    name: 'Guias e Comparativos',
+    icon: 'ph:scales',
+    href: '/guias-e-comparativos/',
   },
   {
-    name: 'Colchões de Espuma',
-    icon: 'ph:cube',
-    href: '/colchoes-de-espuma/',
+    name: 'Dicas e Manutenção',
+    icon: 'ph:wrench',
+    href: '/dicas-e-manutencao/',
   },
   {
-    name: 'Molas Ensacadas',
-    icon: 'ph:circle-dashed',
-    href: '/molas-ensacadas/',
-  },
-  {
-    name: 'Saúde e Ortopédicos',
-    icon: 'ph:heartbeat',
-    href: '/saude-e-ortopedicos/',
-  },
-  {
-    name: 'Colchões Na Caixa',
-    icon: 'ph:package',
-    href: '/colchoes-na-caixa/',
-  },
-  {
-    name: 'Infláveis e Pneumáticos',
-    icon: 'ph:wind',
-    href: '/inflaveis-e-pneumaticos/',
+    name: 'Modelos Oven',
+    icon: 'ph:oven',
+    href: '/modelos-oven/',
   },
   {
     name: 'Acessórios',
-    icon: 'ph:bed',
+    icon: 'ph:star-four',
     href: '/acessorios/',
+  },
+  {
+    name: 'Receitas de Carnes',
+    icon: 'mdi:food-drumstick',
+    href: '/receitas-de-carnes/',
+  },
+  {
+    name: 'Receitas de Lanches',
+    icon: 'ph:hamburger',
+    href: '/receitas-de-lanches/',
+  },
+  {
+    name: 'Receitas de Doces',
+    icon: 'ph:cake',
+    href: '/receitas-de-doces/',
+  },
+  {
+    name: 'Receitas do Dia a Dia',
+    icon: 'ph:cooking-pot',
+    href: '/receitas-do-dia-a-dia/',
   },
 ];
 
 const buyerSteps = [
   {
     num: '1',
-    title: 'Defina sua Posição de Sono',
-    text: 'Quem dorme de lado precisa de mais maciez para os ombros, enquanto quem dorme de costas exige suporte firme para a lombar.',
+    title: 'Defina suas Necessidades',
+    text: 'Quantas pessoas vão usar? Qual tipo de receita você mais prepara? Essas respostas definem a capacidade ideal.',
   },
   {
     num: '2',
-    title: 'Considere o Peso Corporal',
-    text: 'Pessoas mais pesadas devem buscar colchões híbridos ou de molas ensacadas para garantir longevidade e suporte estrutural.',
+    title: 'Considere a Capacidade',
+    text: 'Modelos de 3 a 5 litros servem casais, enquanto famílias grandes precisam de 6 litros ou mais para melhores resultados.',
   },
   {
     num: '3',
-    title: 'Teste o Isolamento de Movimento',
-    text: 'Se você dorme acompanhado, este é o fator crucial para não ser acordado toda vez que o parceiro se mexe.',
+    title: 'Verifique Recursos Essenciais',
+    text: 'Timer preciso, temperatura ajustável e cesto antiaderente são diferenciais que fazem toda a diferença no dia a dia.',
   },
 ];
 ---
 
 <Layout
-  title={`${siteConfig.title} | Especialistas em Colchões e Sono de Qualidade`}
+  title={`${siteConfig.title} | Especialistas em Air Fryer e Cozinha Prática`}
   description={siteConfig.description}
   wideContent={true}
   noTopPadding={true}
@@ -92,17 +97,17 @@ const buyerSteps = [
       <div class="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-12 md:pb-24 grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
         <div class="z-10">
           <span class="inline-block py-1 px-3 rounded-full bg-secondary-container text-on-secondary-container text-sm font-medium mb-4 md:mb-6 uppercase tracking-wider">
-            Autoridade em Sono
+            Autoridade em Cozinha
           </span>
           <h1 class="text-3xl md:text-5xl lg:text-[3rem] font-extrabold text-primary dark:text-primary-fixed-dim mb-4 md:mb-6 leading-tight tracking-tight">
-            O descanso que você merece começa com a escolha certa.
+            O sabor que você merece começa com a escolha certa.
           </h1>
           <p class="text-base md:text-lg text-on-surface-variant dark:text-on-surface-variant mb-6 md:mb-10 max-w-xl leading-relaxed">
-            Análises profundas, testes de laboratório e guias imparciais para ajudar você a encontrar o colchão perfeito entre centenas de opções no mercado.
+            Análises profundas, testes práticos e guias imparciais para ajudar você a encontrar o air fryer perfeito entre centenas de opções no mercado.
           </p>
           <div class="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4">
             <a href="/blog/" class="bg-primary text-on-primary px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold shadow-lg shadow-primary/20 dark:shadow-primary/30 hover:-translate-y-0.5 transition-all text-center">
-              Ver Melhores Colchões
+              Ver Melhores Air Fryers
             </a>
             <a href="/categorias/" class="border-2 border-primary-container text-primary dark:text-primary-fixed-dim px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold hover:bg-primary-container/5 dark:hover:bg-white/5 transition-all text-center">
               Guia de Compra
@@ -114,7 +119,7 @@ const buyerSteps = [
           <Image 
             class="relative rounded-2xl md:rounded-3xl shadow-2xl object-cover w-full h-[280px] sm:h-[400px] md:h-[500px] dark:brightness-90"
             src={heroHomeImg}
-            alt="Quarto moderno e confortável com colchão premium"
+            alt="Air fryer moderno em cozinha bem equipada"
             loading="eager"
             fetchpriority="high"
           />
@@ -206,12 +211,12 @@ const buyerSteps = [
         <div class="order-1 lg:order-2">
           <h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary-fixed-dim mb-6 tracking-tight">Guia do Comprador: Como escolher?</h2>
           <p class="text-lg text-on-surface-variant dark:text-on-surface-variant mb-8 leading-relaxed">
-            Comprar um colchão é um investimento de 10 anos na sua saúde. Nosso guia simplifica o processo técnico em passos fáceis de entender.
+            Comprar um air fryer é um investimento na sua rotina na cozinha. Nosso guia simplifica o processo técnico em passos fáceis de entender.
           </p>
           <div class="bg-primary/5 dark:bg-primary-container/10 p-8 rounded-2xl border-l-4 border-primary dark:border-primary-container">
             <Icon name="material-symbols:lightbulb" class="w-8 h-8 text-primary dark:text-primary-fixed-dim mb-4" />
             <p class="italic text-primary dark:text-primary-fixed-dim font-medium leading-relaxed">
-              "A maioria das pessoas escolhe um colchão muito firme. O ideal é o suporte que mantém a coluna alinhada, não a sensação de dureza."
+              "A maioria das pessoas escolhe pelo preço. O ideal é avaliar potência, capacidade e facilidade de limpeza para encontrar o modelo perfeito."
             </p>
           </div>
         </div>
@@ -224,7 +229,7 @@ const buyerSteps = [
       <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
         <div>
           <h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary-fixed-dim mb-4 tracking-tight">Últimos Artigos</h2>
-          <p class="text-on-surface-variant dark:text-on-surface-variant">Dicas, guias e análises para ajudar você a dormir melhor.</p>
+          <p class="text-on-surface-variant dark:text-on-surface-variant">Ter um air fryer bom transforma sua rotina na cozinha.</p>
         </div>
         <a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary/20 dark:border-primary-fixed-dim/20 hover:border-primary dark:hover:border-primary-fixed-dim transition-all pb-1" href="/blog/">
           Ver todos <Icon name="material-symbols:arrow-forward" class="w-4 h-4 inline" />
@@ -276,8 +281,8 @@ const buyerSteps = [
     <!-- Newsletter Section -->
     <section class="bg-primary dark:bg-primary-container py-20 px-6 overflow-hidden relative">
       <div class="max-w-4xl mx-auto text-center relative z-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">Receba ofertas exclusivas e dicas de sono</h2>
-        <p class="text-white/80 mb-10 text-lg">Junte-se a mais de 50.000 pessoas que melhoraram suas noites com nosso guia semanal.</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">Receba ofertas exclusivas e dicas de culinária</h2>
+        <p class="text-white/80 mb-10 text-lg">Junte-se a mais de 50.000 pessoas que transformaram suas refeições com nosso guia semanal.</p>
         <form class="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto" action="/search/" method="get">
           <input 
             class="flex-grow px-6 py-4 rounded-lg border-none focus:ring-4 focus:ring-primary-container dark:focus:ring-primary bg-white dark:bg-surface-container-lowest text-on-background dark:text-on-surface dark:border dark:border-outline-variant/20"

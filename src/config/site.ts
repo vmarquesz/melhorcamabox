@@ -3,7 +3,7 @@ export const siteConfig = {
   lang: "pt-BR",
 
   // Site details from config.json:site
-  title: "Guia de Colchão", // from config.json:site.title
+  title: "Guia de Air Fryer",
   // description is used from existing site.ts, will be updated by config.json:metadata.meta_description
   // url is removed, Astro.site will be used
 
@@ -11,11 +11,11 @@ export const siteConfig = {
   logo: "/logo.svg",
   logoWidth: "200",
   logoHeight: "40",
-  logoText: "Guia de Colchão",
+  logoText: "Guia de Air Fryer",
 
   // SEO metadata from config.json:metadata
   author: "Leonardo Correia Pinto", // from config.json:metadata.meta_author
-  description: "Reviews e guias detalhados para você escolher o melhor colchão para o seu descanso.", // from config.json:metadata.meta_description
+  description: "Reviews e guias detalhados para você escolher o melhor air fryer para a sua cozinha.", // from config.json:metadata.meta_description
   ogImage: "/images/og-image.png", // from config.json:metadata.meta_image (replaces defaultImage)
 
   // Pagination settings from config.json:settings

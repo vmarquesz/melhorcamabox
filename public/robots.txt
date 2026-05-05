@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://guiadecolchao.com.br/sitemap-index.xml
+Sitemap: https://guiadeairfryer.com.br/sitemap-index.xml

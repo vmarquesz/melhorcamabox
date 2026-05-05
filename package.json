@@ -1,6 +1,6 @@
 {
-  "name": "guia-de-colchao",
-  "description": "Blog de afiliados sobre colchões criado com Astro",
+  "name": "guia-de-air-fryer",
+  "description": "Blog de afiliados sobre air fryer criado com Astro",
   "type": "module",
   "version": "1.0.0",
   "scripts": {

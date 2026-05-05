@@ -14,7 +14,7 @@ export const siteConfig = {
   logoText: "Guia de Air Fryer",
 
   // SEO metadata from config.json:metadata
-  author: "Leonardo Correia Pinto", // from config.json:metadata.meta_author
+  author: "Douglas Rocha Azevedo", // from config.json:metadata.meta_author
   description: "Reviews e guias detalhados para você escolher o melhor air fryer para a sua cozinha.", // from config.json:metadata.meta_description
   ogImage: "/images/og-image.png", // from config.json:metadata.meta_image (replaces defaultImage)
 

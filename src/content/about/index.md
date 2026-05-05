@@ -40,7 +40,7 @@ A honestidade é o motor que move o nosso projeto. O Guia de Air Fryer é partic
 
 Por trás das análises práticas, existe um entusiasta focado em culinária prática e bem-estar.
 
-**Leonardo Correia Pinto** fundou o site após perceber a carência de informações técnicas honestas em português sobre o mercado de air fryers. Entusiasta de tecnologia e culinária prática, Leonardo dedica-se a dissecar as fichas técnicas e testar os modelos para garantir que você faça o investimento certo para a sua cozinha.
+**Douglas Rocha Azevedo** fundou o site após perceber a carência de informações técnicas honestas em português sobre o mercado de air fryers. Entusiasta de tecnologia e culinária prática, Douglas dedica-se a dissecar as fichas técnicas e testar os modelos para garantir que você faça o investimento certo para a sua cozinha.
 
 ---
 

@@ -1,40 +1,41 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700;800&display=swap');
 
 /* Dark mode variant for class-based toggling */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Theme configuration - Stitch "Guia de Air Fryer" Design System */
+/* Theme configuration - Stitch "Guia de Air Fryer" Design System — Culinary Precision */
 @theme {
-  /* Primary - Deep Blue */
-  --color-primary: #00236f;
+  /* Primary - Industrial Amber */
+  --color-primary: #855300;
   --color-on-primary: #ffffff;
-  --color-primary-container: #1e3a8a;
-  --color-on-primary-container: #90a8ff;
-  --color-primary-fixed: #dce1ff;
-  --color-primary-fixed-dim: #b6c4ff;
-  --color-on-primary-fixed: #00164e;
-  --color-on-primary-fixed-variant: #264191;
+  --color-primary-container: #f59e0b;
+  --color-on-primary-container: #613b00;
+  --color-primary-fixed: #ffddb8;
+  --color-primary-fixed-dim: #ffb95f;
+  --color-on-primary-fixed: #2a1700;
+  --color-on-primary-fixed-variant: #653e00;
 
-  /* Secondary - Light Blue */
-  --color-secondary: #396477;
+  /* Secondary - Warm Orange */
+  --color-secondary: #904d00;
   --color-on-secondary: #ffffff;
-  --color-secondary-container: #bae6fd;
-  --color-on-secondary-container: #3d687c;
-  --color-secondary-fixed: #bee9ff;
-  --color-secondary-fixed-dim: #a1cde3;
-  --color-on-secondary-fixed: #001f2a;
-  --color-on-secondary-fixed-variant: #1e4c5f;
+  --color-secondary-container: #fe932c;
+  --color-on-secondary-container: #663500;
+  --color-secondary-fixed: #ffdcc3;
+  --color-secondary-fixed-dim: #ffb77d;
+  --color-on-secondary-fixed: #2f1500;
+  --color-on-secondary-fixed-variant: #6e3900;
 
-  /* Tertiary - Soft Grey */
-  --color-tertiary: #1b2b3f;
+  /* Tertiary - Steel Blue */
+  --color-tertiary: #555f6f;
   --color-on-tertiary: #ffffff;
-  --color-tertiary-container: #314156;
-  --color-on-tertiary-container: #9dadc6;
-  --color-tertiary-fixed: #d3e4fe;
-  --color-tertiary-fixed-dim: #b7c8e1;
-  --color-on-tertiary-fixed: #0b1c30;
-  --color-on-tertiary-fixed-variant: #38485d;
+  --color-tertiary-container: #a8b2c4;
+  --color-on-tertiary-container: #3a4554;
+  --color-tertiary-fixed: #d9e3f6;
+  --color-tertiary-fixed-dim: #bdc7d9;
+  --color-on-tertiary-fixed: #121c2a;
+  --color-on-tertiary-fixed-variant: #3d4756;
 
   /* Error */
   --color-error: #ba1a1a;
@@ -42,41 +43,41 @@
   --color-error-container: #ffdad6;
   --color-on-error-container: #93000a;
 
-  /* Surfaces - Clean White palette */
-  --color-background: #f7f9fb;
-  --color-on-background: #191c1e;
-  --color-surface: #f7f9fb;
-  --color-on-surface: #191c1e;
-  --color-on-surface-variant: #444651;
-  --color-surface-variant: #e0e3e5;
-  --color-outline: #757682;
-  --color-outline-variant: #c5c5d3;
-  --color-surface-tint: #4059aa;
-  --color-inverse-surface: #2d3133;
-  --color-inverse-on-surface: #eff1f3;
-  --color-inverse-primary: #b6c4ff;
-  --color-surface-bright: #f7f9fb;
-  --color-surface-dim: #d8dadc;
+  /* Surfaces - Clean Light palette */
+  --color-background: #f8f9fa;
+  --color-on-background: #191c1d;
+  --color-surface: #f8f9fa;
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #534434;
+  --color-surface-variant: #e1e3e4;
+  --color-outline: #867461;
+  --color-outline-variant: #d8c3ad;
+  --color-surface-tint: #855300;
+  --color-inverse-surface: #2e3132;
+  --color-inverse-on-surface: #f0f1f2;
+  --color-inverse-primary: #ffb95f;
+  --color-surface-bright: #f8f9fa;
+  --color-surface-dim: #d9dadb;
   --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f2f4f6;
-  --color-surface-container: #eceef0;
-  --color-surface-container-high: #e6e8ea;
-  --color-surface-container-highest: #e0e3e5;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container: #edeeef;
+  --color-surface-container-high: #e7e8e9;
+  --color-surface-container-highest: #e1e3e4;
 
-  --font-headline: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-body: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-label: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-headline: 'Work Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-label: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
 @layer utilities {
   .ink-shadow {
-    box-shadow: 0px 4px 20px rgba(30, 58, 138, 0.04);
+    box-shadow: 0px 4px 20px rgba(133, 83, 0, 0.06);
   }
   .hero-gradient {
-    background: linear-gradient(135deg, #00236f 0%, #1e3a8a 100%);
+    background: linear-gradient(135deg, #855300 0%, #f59e0b 100%);
   }
-  
+
   .prose-brand {
     --tw-prose-body: var(--color-on-surface-variant);
     --tw-prose-headings: var(--color-on-surface);
@@ -87,33 +88,33 @@
     --tw-prose-hr: var(--color-outline-variant);
     --tw-prose-th-borders: var(--color-outline-variant);
   }
-  
+
   .prose-brand h1, .prose-brand h2, .prose-brand h3, .prose-brand h4 {
     font-family: var(--font-headline);
     font-weight: 800;
-    line-height: 1.3;
-    letter-spacing: -0.015em;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
-  
+
   .prose-brand a {
     font-weight: 700;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
     transition: all 0.2s;
   }
-  
+
   @layer base {
     .prose-brand a:hover {
       color: var(--color-primary-container);
     }
   }
-  
+
   .prose-brand p, .prose-brand li {
     font-family: var(--font-body);
     font-size: 1.125rem;
     line-height: 1.75;
   }
-  
+
   .prose-brand hr {
     margin: 3rem 0;
     border-top: 1px solid var(--color-outline-variant);
@@ -130,78 +131,78 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Dark mode colors - Stitch Dark (derived from seed #1E3A8A) */
+/* Dark mode colors - Stitch Dark (derived from seed #855300) */
 .dark {
   color-scheme: dark;
-  
+
   /* Surface & Background */
   --color-background: #111318;
   --color-on-background: #e2e2e8;
-  
+
   --color-surface: #111318;
   --color-on-surface: #e2e2e8;
-  --color-on-surface-variant: #c5c5d0;
-  
+  --color-on-surface-variant: #d8c3ad;
+
   --color-surface-container-lowest: #0c0e13;
   --color-surface-container-low: #191c20;
   --color-surface-container: #1d2024;
   --color-surface-container-high: #282a2e;
   --color-surface-container-highest: #333538;
-  
+
   --color-surface-bright: #37393e;
   --color-surface-dim: #111318;
-  --color-surface-variant: #44474f;
-  --color-surface-tint: #b6c4ff;
-  
-  /* Primary - Lighter Deep Blue for dark bg */
-  --color-primary: #b6c4ff;
-  --color-on-primary: #00164e;
-  --color-primary-container: #264191;
-  --color-on-primary-container: #dce1ff;
-  --color-primary-fixed: #dce1ff;
-  --color-primary-fixed-dim: #b6c4ff;
-  
+  --color-surface-variant: #534434;
+  --color-surface-tint: #ffb95f;
+
+  /* Primary - Lighter Amber for dark bg */
+  --color-primary: #ffb95f;
+  --color-on-primary: #2a1700;
+  --color-primary-container: #653e00;
+  --color-on-primary-container: #ffddb8;
+  --color-primary-fixed: #ffddb8;
+  --color-primary-fixed-dim: #ffb95f;
+
   /* Secondary */
-  --color-secondary: #a1cde3;
-  --color-on-secondary: #001f2a;
-  --color-secondary-container: #1e4c5f;
-  --color-on-secondary-container: #bee9ff;
-  --color-secondary-fixed: #bee9ff;
-  --color-secondary-fixed-dim: #a1cde3;
-  
+  --color-secondary: #ffb77d;
+  --color-on-secondary: #2f1500;
+  --color-secondary-container: #6e3900;
+  --color-on-secondary-container: #ffdcc3;
+  --color-secondary-fixed: #ffdcc3;
+  --color-secondary-fixed-dim: #ffb77d;
+
   /* Tertiary */
-  --color-tertiary: #b7c8e1;
-  --color-on-tertiary: #0b1c30;
-  --color-tertiary-container: #38485d;
-  --color-on-tertiary-container: #d3e4fe;
-  --color-tertiary-fixed: #d3e4fe;
-  --color-tertiary-fixed-dim: #b7c8e1;
-  
+  --color-tertiary: #bdc7d9;
+  --color-on-tertiary: #121c2a;
+  --color-tertiary-container: #3d4756;
+  --color-on-tertiary-container: #d9e3f6;
+  --color-tertiary-fixed: #d9e3f6;
+  --color-tertiary-fixed-dim: #bdc7d9;
+
   /* Outline */
-  --color-outline: #8f9099;
-  --color-outline-variant: #44474f;
-  
+  --color-outline: #a29380;
+  --color-outline-variant: #534434;
+
   /* Error */
   --color-error: #ffb4ab;
   --color-on-error: #690005;
   --color-error-container: #93000a;
   --color-on-error-container: #ffdad6;
-  
+
   /* Inverse */
   --color-inverse-surface: #e2e2e8;
-  --color-inverse-on-surface: #2f3036;
-  --color-inverse-primary: #00236f;
-  
+  --color-inverse-on-surface: #2e3132;
+  --color-inverse-primary: #855300;
+
   /* Brand additions */
   --tw-prose-body: var(--color-on-surface-variant);
   --tw-prose-headings: var(--color-on-surface);
   --tw-prose-links: var(--color-primary);
   --tw-prose-bold: var(--color-on-surface);
-  
+
   .hero-gradient {
-    background: linear-gradient(135deg, #111318 0%, #264191 100%);
+    background: linear-gradient(135deg, #111318 0%, #653e00 100%);
   }
-  
+
   .ink-shadow {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
   }

@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import { siteConfig } from '@config/site';
 import { Icon } from 'astro-icon/components';
-import { formatDate } from '@utils/date';
+import heroImage from '@assets/images/hero-home-stitch.webp';
 
 const posts = await getCollection('posts', ({ data }) => {
   return !data.draft;
@@ -14,52 +14,62 @@ const sortedPosts = posts.sort((a, b) => {
   return new Date(b.data.date || 0).getTime() - new Date(a.data.date || 0).getTime();
 });
 
-const latestPosts = sortedPosts.slice(0, 3);
-const articlePosts = sortedPosts.slice(0, 6);
+const featuredPosts = sortedPosts.slice(0, 3);
+const recentPosts = sortedPosts.slice(3, 6);
+const tipPosts = sortedPosts.filter(post => 
+  post.data.categories?.some(cat => 
+    cat.toLowerCase().includes('dica') || 
+    cat.toLowerCase().includes('receita') ||
+    cat.toLowerCase().includes('manutenção')
+  )
+).slice(0, 2);
 
 const categories = [
   {
     name: 'Melhores Marcas',
+    description: 'Conheça as principais fabricantes e suas linhas de air fryers.',
     icon: 'ph:buildings',
     href: '/melhores-marcas/',
   },
   {
     name: 'Guias e Comparativos',
+    description: 'Comparativos detalhados para ajudar você a escolher o melhor air fryer.',
     icon: 'ph:scales',
     href: '/guias-e-comparativos/',
   },
   {
-    name: 'Dicas e Manutenção',
-    icon: 'ph:wrench',
-    href: '/dicas-e-manutencao/',
-  },
-  {
     name: 'Modelos Oven',
+    description: 'Air fryers no formato oven: mais capacidade e versatilidade na cozinha.',
     icon: 'ph:oven',
     href: '/modelos-oven/',
   },
   {
     name: 'Acessórios',
+    description: 'Cestos, grelhas, tapetes de silicone e tudo para turbinar seu air fryer.',
     icon: 'ph:star-four',
     href: '/acessorios/',
   },
   {
     name: 'Receitas de Carnes',
+    description: 'Frango, boi, porco e peixe: receitas suculentas feitas no air fryer.',
     icon: 'mdi:food-drumstick',
     href: '/receitas-de-carnes/',
   },
   {
     name: 'Receitas de Lanches',
+    description: 'Petiscos, salgados e lanches práticos e crocantes na air fryer.',
     icon: 'ph:hamburger',
     href: '/receitas-de-lanches/',
   },
   {
     name: 'Receitas de Doces',
+    description: 'Bolos, sobremesas e doces irresistíveis feitos no air fryer.',
     icon: 'ph:cake',
     href: '/receitas-de-doces/',
   },
   {
     name: 'Receitas do Dia a Dia',
+    description: 'Refeições rápidas e práticas para o dia a dia usando a air fryer.',
     icon: 'ph:cooking-pot',
     href: '/receitas-do-dia-a-dia/',
   },
@@ -72,138 +82,159 @@ const categories = [
   wideContent={true}
   noTopPadding={true}
 >
-  <main>
-    <!-- Hero Section -->
-    <section class="relative bg-surface dark:bg-surface overflow-hidden">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-16 md:pb-24 grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-        <div class="z-10">
-          <span class="inline-block py-1 px-3 rounded-lg bg-primary-container/15 text-primary dark:text-primary-fixed-dim text-sm font-semibold uppercase tracking-wider mb-4 md:mb-6">
-            Guia Definitivo 2024
-          </span>
-          <h1 class="text-3xl md:text-5xl lg:text-[3rem] font-extrabold text-primary dark:text-primary-fixed-dim mb-4 md:mb-6 leading-tight tracking-tight font-headline">
-            Qual Air Fryer comprar em 2024?
-          </h1>
-          <p class="text-base md:text-lg text-on-surface-variant dark:text-on-surface-variant mb-6 md:mb-10 max-w-xl leading-relaxed">
-            Testamos mais de 30 modelos para você não errar na escolha. Dados técnicos, performance real e custo-benefício analisados por especialistas.
-          </p>
-          <div class="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4">
-            <a href="/blog/" class="bg-primary text-on-primary px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold shadow-lg shadow-primary/20 dark:shadow-primary/30 hover:-translate-y-0.5 transition-all text-center">
-              Ler o Guia Completo
-            </a>
-            <a href="/categorias/" class="border-2 border-primary-container text-primary dark:text-primary-fixed-dim px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold hover:bg-primary-container/5 dark:hover:bg-white/5 transition-all text-center">
-              Ver por Categoria
-            </a>
+  <!-- Hero Section -->
+  <section class="relative w-full h-[600px] overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center">
+      <Image
+        src={heroImage}
+        alt="Cozinha moderna com air fryer"
+        width={2560}
+        height={600}
+        class="w-full h-full object-cover"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-on-background/80 to-transparent"></div>
+    </div>
+    <div class="relative z-10 h-full max-w-container-max mx-auto px-gutter flex flex-col justify-center items-start text-white">
+      <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl mb-4 text-white leading-tight tracking-tight">
+        Guia Definitivo: Qual Air Fryer comprar?
+      </h1>
+      <p class="font-body text-lg md:text-xl max-w-xl mb-8 opacity-90 leading-relaxed">
+        Testamos dezenas de modelos para você não errar na escolha. Dados técnicos, performance real e custo-benefício analisados por especialistas.
+      </p>
+      <a href="/blog/" class="bg-primary-container text-on-primary-container px-8 py-4 rounded-lg font-bold text-body-md hover:bg-[#D97706] transition-all active:scale-95 shadow-lg">
+        Ler o Guia Completo
+      </a>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="max-w-container-max mx-auto px-gutter py-16 md:py-24">
+    <div class="text-center mb-12">
+      <h2 class="font-headline text-3xl md:text-4xl font-bold text-primary dark:text-primary-fixed-dim tracking-tight">Explore por Categoria</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      {categories.map((cat) => (
+        <a href={cat.href} class="bg-surface-container-lowest dark:bg-surface-container-high/50 p-6 md:p-8 rounded-xl border border-outline-variant/15 dark:border-outline-variant/15 hover:shadow-xl hover:border-primary/25 dark:hover:border-primary-container/40 transition-all group flex flex-col items-center justify-center text-center">
+          <div class="w-14 h-14 bg-primary-container/25 dark:bg-primary-container/20 rounded-2xl flex items-center justify-center text-primary dark:text-primary-fixed-dim mb-4 group-hover:scale-110 transition-transform">
+            <Icon name={cat.icon} class="w-7 h-7" />
           </div>
-        </div>
+          <h3 class="text-sm md:text-base font-semibold text-primary dark:text-primary-fixed-dim">{cat.name}</h3>
+        </a>
+      ))}
+    </div>
+  </section>
 
-        <!-- Category Cards -->
-        <div class="grid grid-cols-1 gap-4">
-          {categories.slice(0, 3).map((cat) => (
-            <a href={cat.href} class="flex items-center gap-4 bg-surface-container-lowest dark:bg-surface-container-high rounded-lg p-4 border border-outline-variant/15 dark:border-outline-variant/15 hover:border-primary/30 dark:hover:border-primary-container/40 hover:shadow-md transition-all group">
-              <div class="w-12 h-12 bg-primary-container/20 dark:bg-primary-container/20 rounded-lg flex items-center justify-center text-primary dark:text-primary-fixed-dim group-hover:scale-105 transition-transform shrink-0">
-                <Icon name={cat.icon} class="w-6 h-6" />
-              </div>
-              <span class="font-semibold text-on-surface dark:text-on-surface">{cat.name}</span>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Categories Grid -->
-    <section class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary-fixed-dim mb-4 tracking-tight font-headline">Explore por Categoria</h2>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6">
-        {categories.map((cat) => (
-          <a href={cat.href} class="bg-surface-container-lowest dark:bg-surface-container-high/50 p-6 md:p-8 rounded-xl border border-outline-variant/15 dark:border-outline-variant/15 hover:shadow-xl hover:border-primary/25 dark:hover:border-primary-container/40 transition-all group flex flex-col items-center justify-center text-center">
-            <div class="w-14 h-14 bg-primary-container/25 dark:bg-primary-container/20 rounded-2xl flex items-center justify-center text-primary dark:text-primary-fixed-dim mb-4 group-hover:scale-110 transition-transform">
-              <Icon name={cat.icon} class="w-7 h-7" />
-            </div>
-            <h3 class="text-sm md:text-base font-semibold text-primary dark:text-primary-fixed-dim">{cat.name}</h3>
-          </a>
-        ))}
-      </div>
-    </section>
-
-    <!-- Featured Reviews -->
-    {latestPosts.length > 0 && (
-    <section class="bg-surface-container-low dark:bg-surface-container-high/30 py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-          <div>
-            <h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary-fixed-dim mb-4 tracking-tight font-headline">Nossas Escolhas</h2>
-            <p class="text-on-surface-variant dark:text-on-surface-variant">Avaliações independentes baseadas em testes reais.</p>
-          </div>
-          <a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary/25 dark:border-primary-fixed-dim/25 hover:border-primary dark:hover:border-primary-fixed-dim transition-all pb-1" href="/blog/">
-            Ver todas <Icon name="material-symbols:arrow-forward" class="w-4 h-4 inline" />
-          </a>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {latestPosts.map((post, i) => (
-            <article class="bg-surface-container-lowest dark:bg-surface-container-high rounded-xl overflow-hidden transition-all group shadow-sm border border-outline-variant/15 dark:border-outline-variant/15 hover:shadow-xl hover:border-primary/25 dark:hover:border-primary-container/40">
-              <a href={`/${post.slug}/`} class="block h-48 overflow-hidden relative">
-                {post.data.image && (
-                  <Image
-                    src={post.data.image}
-                    alt={post.data.title}
-                    width={640}
-                    height={400}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                )}
-              </a>
-                <div class="p-6 md:p-8">
-                  {i === 0 && (
-                    <span class="inline-block px-3 py-1 rounded-lg bg-primary/10 text-primary dark:text-primary-fixed-dim text-xs font-bold uppercase tracking-wider mb-3">
-                      Melhor Premium
-                    </span>
-                  )}
-                  {i === 1 && (
-                    <span class="inline-block px-3 py-1 rounded-lg bg-secondary-container/25 text-secondary dark:text-secondary-fixed-dim text-xs font-bold uppercase tracking-wider mb-3">
-                      Custo-Benefício
-                    </span>
-                  )}
-                  {i === 2 && (
-                    <span class="inline-block px-3 py-1 rounded-lg bg-tertiary-container/25 text-tertiary dark:text-tertiary-fixed-dim text-xs font-bold uppercase tracking-wider mb-3">
-                      Para Famílias
-                    </span>
-                  )}
-                  <h3 class="text-xl font-semibold text-primary dark:text-primary-fixed-dim mb-3 group-hover:text-primary-container dark:group-hover:text-primary transition-colors font-headline">
-                    <a href={`/${post.slug}/`}>{post.data.title}</a>
-                  </h3>
-                  <p class="text-on-surface-variant dark:text-on-surface-variant text-sm leading-relaxed line-clamp-3">
-                    {post.data.description}
-                  </p>
-                  <a href={`/${post.slug}/`} class="block w-full mt-6 py-3 bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container rounded-lg font-bold text-center hover:bg-primary-container dark:hover:bg-primary-fixed hover:text-on-primary dark:hover:text-on-primary-container transition-colors">
-                    Ver Detalhes
-                  </a>
-                </div>
-              </article>
-          ))}
-        </div>
-      </div>
-    </section>
-    )}
-
-    <!-- Latest Articles -->
-    {articlePosts.length > 3 && (
-    <section class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-        <div>
-          <h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary-fixed-dim mb-4 tracking-tight font-headline">Avaliações Recentes</h2>
-          <p class="text-on-surface-variant dark:text-on-surface-variant">Dicas, guias e análises para ajudar você a cozinhar melhor.</p>
-        </div>
-        <a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary/25 dark:border-primary-fixed-dim/25 hover:border-primary dark:hover:border-primary-fixed-dim transition-all pb-1" href="/blog/">
-          Ver todas <Icon name="material-symbols:arrow-forward" class="w-4 h-4 inline" />
+  <!-- Top Picks Section (Bento Layout) -->
+  <section class="bg-surface-container-low py-16 md:py-24">
+    <div class="max-w-container-max mx-auto px-gutter">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-surface">Nossas Escolhas</h2>
+        <a href="/blog/" class="text-primary font-bold flex items-center gap-1 cursor-pointer hover:text-primary-container transition-colors">
+          Ver todas <span class="material-symbols-outlined">trending_flat</span>
         </a>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {articlePosts.slice(3).map((post) => (
-          <article class="bg-surface-container-lowest dark:bg-surface-container-high rounded-2xl overflow-hidden group shadow-[0px_4px_20px_rgba(133,83,0,0.04)] dark:shadow-[0px_4px_20px_rgba(0,0,0,0.3)] hover:shadow-xl transition-all duration-300 border border-outline-variant/15 dark:border-outline-variant/15 hover:border-primary/25 dark:hover:border-primary-container/40 flex flex-col">
-            {post.data.image && (
-              <a href={`/${post.slug}/`} class="block h-48 overflow-hidden relative">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        {/* Featured Post 1 - Large */}
+        {featuredPosts[0] && (
+          <div class="lg:col-span-2 bg-white p-1 border border-outline-variant rounded-xl flex flex-col shadow-sm">
+            <a href={`/${featuredPosts[0].slug}/`} class="block h-64 bg-surface-container rounded-t-lg overflow-hidden relative">
+              {featuredPosts[0].data.image && (
+                <Image
+                  src={featuredPosts[0].data.image}
+                  alt={featuredPosts[0].data.title}
+                  width={800}
+                  height={400}
+                  class="w-full h-full object-cover"
+                />
+              )}
+              <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-xs uppercase font-bold tracking-widest">
+                Melhor Premium
+              </div>
+            </a>
+            <div class="p-6">
+              <h3 class="font-headline text-xl md:text-2xl font-semibold mb-2">
+                <a href={`/${featuredPosts[0].slug}/`}>{featuredPosts[0].data.title}</a>
+              </h3>
+              <p class="text-on-surface-variant mb-6">{featuredPosts[0].data.description}</p>
+              <a href={`/${featuredPosts[0].slug}/`} class="inline-block border-2 border-on-surface text-on-surface px-6 py-2 rounded font-bold hover:bg-on-surface hover:text-white transition-all">
+                Ver Detalhes
+              </a>
+            </div>
+          </div>
+        )}
+
+        {/* Featured Post 2 - Small */}
+        {featuredPosts[1] && (
+          <div class="bg-white border border-outline-variant rounded-xl shadow-sm flex flex-col p-6">
+            <a href={`/${featuredPosts[1].slug}/`} class="block h-48 bg-surface-container rounded-t-lg overflow-hidden mb-4 -mt-6 -mx-6">
+              {featuredPosts[1].data.image && (
+                <Image
+                  src={featuredPosts[1].data.image}
+                  alt={featuredPosts[1].data.title}
+                  width={400}
+                  height={300}
+                  class="w-full h-full object-cover"
+                />
+              )}
+            </a>
+            <div class="bg-secondary-container/10 text-secondary font-bold text-xs mb-4 px-2 py-1 rounded self-start">
+              CUSTO-BENEFÍCIO
+            </div>
+            <h3 class="font-headline text-lg font-semibold mb-2">
+              <a href={`/${featuredPosts[1].slug}/`}>{featuredPosts[1].data.title}</a>
+            </h3>
+            <p class="text-on-surface-variant mb-auto">{featuredPosts[1].data.description}</p>
+            <div class="mt-6 pt-6 border-t border-outline-variant">
+              <a href={`/${featuredPosts[1].slug}/`} class="block w-full py-3 border border-outline text-on-surface font-bold rounded hover:bg-surface-variant transition-colors text-center">
+                Ler Review Completo
+              </a>
+            </div>
+          </div>
+        )}
+
+        {/* Featured Post 3 - Small */}
+        {featuredPosts[2] && (
+          <div class="bg-white border border-outline-variant rounded-xl shadow-sm flex flex-col p-6">
+            <a href={`/${featuredPosts[2].slug}/`} class="block h-48 bg-surface-container rounded-t-lg overflow-hidden mb-4 -mt-6 -mx-6">
+              {featuredPosts[2].data.image && (
+                <Image
+                  src={featuredPosts[2].data.image}
+                  alt={featuredPosts[2].data.title}
+                  width={400}
+                  height={300}
+                  class="w-full h-full object-cover"
+                />
+              )}
+            </a>
+            <div class="bg-tertiary-container/20 text-tertiary font-bold text-xs mb-4 px-2 py-1 rounded self-start">
+              IDEAL PARA FAMÍLIAS
+            </div>
+            <h3 class="font-headline text-lg font-semibold mb-2">
+              <a href={`/${featuredPosts[2].slug}/`}>{featuredPosts[2].data.title}</a>
+            </h3>
+            <p class="text-on-surface-variant mb-auto">{featuredPosts[2].data.description}</p>
+            <div class="mt-6 pt-6 border-t border-outline-variant">
+              <a href={`/${featuredPosts[2].slug}/`} class="block w-full py-3 border border-outline text-on-surface font-bold rounded hover:bg-surface-variant transition-colors text-center">
+                Ler Review Completo
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Reviews -->
+  {recentPosts.length > 0 && (
+    <section class="max-w-container-max mx-auto px-gutter py-16 md:py-24">
+      <h2 class="font-headline text-3xl md:text-4xl font-bold mb-8">Avaliações Recentes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {recentPosts.map((post) => (
+          <article class="bg-white border border-outline-variant rounded-lg overflow-hidden group">
+            <a href={`/${post.slug}/`} class="block h-48 bg-surface-container relative overflow-hidden">
+              {post.data.image && (
                 <Image
                   src={post.data.image}
                   alt={post.data.title}
@@ -211,56 +242,106 @@ const categories = [
                   height={400}
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-              </a>
-            )}
-            <div class="p-6 flex flex-col flex-grow">
-              <div class="flex items-center gap-3 mb-3">
-                {post.data.categories?.[0] && (
-                  <span class="inline-block px-3 py-1 rounded-lg bg-primary-container/20 dark:bg-primary-container/15 text-primary dark:text-primary-fixed-dim text-xs font-semibold uppercase tracking-wider">
-                    {post.data.categories[0]}
-                  </span>
-                )}
-                {post.data.date && (
-                  <span class="text-xs text-on-surface-variant dark:text-on-surface-variant">
-                    {formatDate(new Date(post.data.date))}
-                  </span>
-                )}
-              </div>
-              <h3 class="text-lg font-semibold text-primary dark:text-primary-fixed-dim mb-2 leading-snug group-hover:text-primary-container dark:group-hover:text-primary transition-colors font-headline">
+              )}
+            </a>
+            <div class="p-6">
+              {post.data.categories?.[0] && (
+                <p class="text-xs text-primary uppercase mb-2 font-semibold">{post.data.categories[0]}</p>
+              )}
+              <h3 class="font-headline text-lg font-semibold mb-4">
                 <a href={`/${post.slug}/`}>{post.data.title}</a>
               </h3>
-              <p class="text-on-surface-variant dark:text-on-surface-variant text-sm leading-relaxed line-clamp-3 flex-grow">
-                {post.data.description}
-              </p>
-              <a href={`/${post.slug}/`} class="mt-4 inline-flex items-center gap-2 text-primary dark:text-primary-fixed-dim font-semibold text-sm hover:gap-3 transition-all">
-                Continuar lendo <Icon name="material-symbols:arrow-forward" class="w-4 h-4" />
+              <p class="text-body-md text-on-surface-variant mb-6">{post.data.description}</p>
+              <a href={`/${post.slug}/`} class="block w-full py-3 border border-outline text-on-surface font-bold rounded hover:bg-surface-variant transition-colors text-center">
+                Ler Review Completo
               </a>
             </div>
           </article>
         ))}
       </div>
     </section>
-    )}
+  )}
 
-    <!-- Newsletter Section -->
-    <section class="bg-primary dark:bg-primary-container py-20 px-6 overflow-hidden relative">
-      <div class="max-w-4xl mx-auto text-center relative z-10">
-        <Icon name="material-symbols:mail" class="w-10 h-10 text-white/80 mb-4 mx-auto" />
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight font-headline">Receba dicas e promoções</h2>
-        <p class="text-white/80 mb-10 text-lg">Inscreva-se na nossa newsletter semanal para receber comparativos exclusivos e cupons de desconto das principais marcas.</p>
-        <form class="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto" action="/search/" method="get">
+  <!-- Tips & Recipes Section -->
+  <section class="max-w-container-max mx-auto px-gutter py-16 md:py-24 border-t border-outline-variant">
+    <h2 class="font-headline text-3xl md:text-4xl font-bold mb-8">Dicas & Receitas</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {tipPosts.length >= 2 ? (
+        tipPosts.map((post) => (
+          <a href={`/${post.slug}/`} class="group relative h-64 rounded-xl overflow-hidden cursor-pointer shadow-lg">
+            {post.data.image && (
+              <Image
+                src={post.data.image}
+                alt={post.data.title}
+                width={800}
+                height={400}
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            )}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+              <h3 class="font-headline text-xl md:text-2xl font-semibold mb-2">{post.data.title}</h3>
+              <p class="text-body-md opacity-90">{post.data.description}</p>
+            </div>
+          </a>
+        ))
+      ) : (
+        <>
+          <a href="/dicas-e-manutencao/" class="group relative h-64 rounded-xl overflow-hidden cursor-pointer shadow-lg">
+            <Image
+              src={heroImage}
+              alt="Como limpar sua Air Fryer"
+              width={800}
+              height={400}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+              <h3 class="font-headline text-xl md:text-2xl font-semibold mb-2">Como limpar sua Air Fryer</h3>
+              <p class="text-body-md opacity-90">Truques para remover a gordura encrustada sem estragar o antiaderente.</p>
+            </div>
+          </a>
+          <a href="/receitas-do-dia-a-dia/" class="group relative h-64 rounded-xl overflow-hidden cursor-pointer shadow-lg">
+            <Image
+              src={heroImage}
+              alt="Top 10 Receitas Rápidas"
+              width={800}
+              height={400}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+              <h3 class="font-headline text-xl md:text-2xl font-semibold mb-2">Top 10 Receitas Rápidas</h3>
+              <p class="text-body-md opacity-90">Do café da manhã ao jantar: pratos prontos em menos de 15 minutos.</p>
+            </div>
+          </a>
+        </>
+      )}
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="bg-on-background py-16 md:py-24">
+    <div class="max-w-container-max mx-auto px-gutter text-center">
+      <div class="max-w-2xl mx-auto">
+        <span class="material-symbols-outlined text-primary-container text-5xl mb-4">mail</span>
+        <h2 class="font-headline text-3xl md:text-4xl font-bold text-white mb-4">Receba dicas e promoções</h2>
+        <p class="font-body text-lg opacity-80 mb-8 text-white">
+          Inscreva-se na nossa newsletter semanal para receber comparativos exclusivos e cupons de desconto das principais marcas.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-4">
           <input
-            class="flex-grow px-6 py-4 rounded-lg border-none focus:ring-4 focus:ring-primary-container dark:focus:ring-primary bg-white dark:bg-surface-container-lowest text-on-background dark:text-on-surface dark:border dark:border-outline-variant/20"
+            class="flex-1 px-6 py-4 rounded-lg bg-surface-container-highest text-on-background focus:ring-2 focus:ring-primary-container outline-none border-none"
             placeholder="Seu melhor e-mail"
             type="email"
             required
           />
-          <button class="bg-white text-primary dark:text-on-primary px-10 py-4 rounded-lg font-bold hover:bg-slate-100 dark:hover:bg-slate-200 transition-colors" type="submit">
+          <button
+            class="bg-primary-container text-on-primary-container font-bold px-8 py-4 rounded-lg hover:bg-[#D97706] transition-colors whitespace-nowrap"
+            type="submit"
+          >
             Inscrever agora
           </button>
         </form>
-        <p class="text-white/60 text-xs mt-6 italic">Respeitamos sua privacidade. Cancele a qualquer momento.</p>
+        <p class="text-xs mt-4 opacity-50 text-white">Respeitamos sua privacidade. Cancele a qualquer momento.</p>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 </Layout>

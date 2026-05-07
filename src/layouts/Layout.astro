@@ -67,7 +67,7 @@ const {
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
     <link rel="preconnect" href="https://m.media-amazon.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
     {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
     <!-- Theme Detection Script - Must be as early as possible to prevent FOUC -->
@@ -89,10 +89,7 @@ const {
       html.dark { background-color: #111318; color: #e2e2e8; }
       body { margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
       main { flex: 1 0 auto; }
-      /* Material Symbols configuration */
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      }
+      
     </style>
 
 

@@ -146,6 +146,8 @@ const categories = [
                 <Image
                   src={featuredPosts[0].data.image}
                   alt={featuredPosts[0].data.title}
+                  widths={[320, 640, 800]}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   width={800}
                   height={400}
                   class="w-full h-full object-cover"
@@ -175,6 +177,8 @@ const categories = [
                 <Image
                   src={featuredPosts[1].data.image}
                   alt={featuredPosts[1].data.title}
+                  widths={[320, 400]}
+                  sizes="(max-width: 1024px) 100vw, 25vw"
                   width={400}
                   height={300}
                   class="w-full h-full object-cover"
@@ -204,6 +208,8 @@ const categories = [
                 <Image
                   src={featuredPosts[2].data.image}
                   alt={featuredPosts[2].data.title}
+                  widths={[320, 400]}
+                  sizes="(max-width: 1024px) 100vw, 25vw"
                   width={400}
                   height={300}
                   class="w-full h-full object-cover"
@@ -240,6 +246,8 @@ const categories = [
                 <Image
                   src={post.data.image}
                   alt={post.data.title}
+                  widths={[320, 480, 640]}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   width={640}
                   height={400}
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -275,6 +283,8 @@ const categories = [
               <Image
                 src={post.data.image}
                 alt={post.data.title}
+                widths={[320, 640, 800]}
+                sizes="(max-width: 768px) 100vw, 50vw"
                 width={800}
                 height={400}
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -292,6 +302,8 @@ const categories = [
             <Image
               src={heroImage}
               alt="Como limpar sua Air Fryer"
+              widths={[320, 640, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
               width={800}
               height={400}
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -305,6 +317,8 @@ const categories = [
             <Image
               src={heroImage}
               alt="Top 10 Receitas Rápidas"
+              widths={[320, 640, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
               width={800}
               height={400}
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

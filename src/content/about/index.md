@@ -1,7 +1,7 @@
 ---
 title: "Sobre Nós"
-meta_title: "Sobre Nós | Guia de Air Fryer"
-image: "../../assets/images/authors/thiago-lima.webp"
+meta_title: "Sobre Nós | Melhor Cama Box"
+image: "../../assets/images/authors/eduardo.webp"
 draft: false
 
 what_i_do:
@@ -19,29 +19,29 @@ what_i_do:
 
 ## Cozinha prática sem mistério (e sem erro na compra)
 
-Seja bem-vindo ao **Guia de Air Fryer**. Todo mundo já passou pela frustração de investir em um eletrodoméstico caro e descobrir que ele não rende, é difícil de limpar ou simplesmente não entrega o que prometia. Nossa missão é evitar que você caia nessas armadilhas e encontre o air fryer perfeito para a sua cozinha.
+Seja bem-vindo ao **Melhor Cama Box**. Todo mundo já passou pela frustração de investir em uma cama box cara e descobrir que ela não é confortável, não tem durabilidade ou simplesmente não entrega o que prometia. Nossa missão é evitar que você caia nessas armadilhas e encontre a cama box perfeita para o seu quarto.
 
-### Como analisamos os air fryers?
+### Como analisamos as camas box?
 
-O Guia de Air Fryer é um blog independente focado em precisão prática. Nós não olhamos apenas para o design bonito ou as promessas de marketing. Nossa metodologia de análise leva a sério a eficiência do produto:
+O Melhor Cama Box é um blog independente focado em precisão prática. Nós não olhamos apenas para o design bonito ou as promessas de marketing. Nossa metodologia de análise leva a sério a eficiência do produto:
 
-- **Capacidade e Performance:** Avaliamos como o air fryer distribui o calor, o tamanho real do cesto e se rende para o número de pessoas prometido.
-- **Materiais e Durabilidade:** Testamos a resistência do revestimento antiaderente, a qualidade do cesto e a durabilidade dos controles ao longo do tempo.
-- **Facilidade de Uso e Limpeza:** Medimos o quão prático é operar e limpar cada modelo, essencial para o dia a dia.
+- **Conforto e Ergonomia:** Avaliamos a densidade do colchão, o suporte da estrutura e se realmente entrega o descanso prometido.
+- **Materiais e Durabilidade:** Testamos a resistência do tecido, a qualidade da base e a durabilidade dos componentes ao longo do tempo.
+- **Facilidade de Montagem e Manutenção:** Medimos o quão prático é montar e manter cada modelo, essencial para o dia a dia.
 - **Custo-Benefício:** Comparamos o preço com a qualidade entregue para garantir que você pague justo pelo que recebe.
 
 ### Nossa Transparência
 
-A honestidade é o motor que move o nosso projeto. O Guia de Air Fryer é participante do Programa de Associados da Amazon. Quando você escolhe um produto através dos nossos links, podemos receber uma comissão.
+A honestidade é o motor que move o nosso projeto. O Melhor Cama Box é participante do Programa de Associados da Amazon. Quando você escolhe um produto através dos nossos links, podemos receber uma comissão.
 
-**Isso deixa o produto mais caro? Não.** O preço que você paga na loja é exatamente o mesmo. Essa comissão é o que financia nosso trabalho, permitindo que continuemos pesquisando, testando e trazendo análises imparciais sobre o que vale ou não a pena no mercado de air fryers.
+**Isso deixa o produto mais caro? Não.** O preço que você paga na loja é exatamente o mesmo. Essa comissão é o que financia nosso trabalho, permitindo que continuemos pesquisando, testando e trazendo análises imparciais sobre o que vale ou não a pena no mercado de camas box.
 
-### Quem faz o Guia de Air Fryer?
+### Quem faz o Melhor Cama Box?
 
-Por trás das análises práticas, existe um entusiasta focado em culinária prática e bem-estar.
+Por trás das análises práticas, existe um entusiasta focado em conforto e qualidade de vida.
 
-**Douglas Rocha Azevedo** fundou o site após perceber a carência de informações técnicas honestas em português sobre o mercado de air fryers. Entusiasta de tecnologia e culinária prática, Douglas dedica-se a dissecar as fichas técnicas e testar os modelos para garantir que você faça o investimento certo para a sua cozinha.
+**Eduardo Souza Cavalcanti** fundou o site após perceber a carência de informações técnicas honestas em português sobre o mercado de camas box. Entusiasta de tecnologia e bem-estar, Eduardo dedica-se a dissecar as fichas técnicas e testar os modelos para garantir que você faça o investimento certo para o seu sono.
 
 ---
 
-*Procurando seu novo air fryer? [Acesse a página inicial e encontre o modelo ideal](https://guiadeairfryer.com.br/).*
+*Procurando sua nova cama box? [Acesse a página inicial e encontre o modelo ideal](https://melhorcamabox.com.br/).*

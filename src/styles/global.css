@@ -4,7 +4,7 @@
 /* Dark mode variant for class-based toggling */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Theme configuration - Stitch "Guia de Air Fryer" Design System — Culinary Precision */
+/* Theme configuration - Melhor Cama Box Design System */
 @theme {
   /* Primary - Industrial Amber */
   --color-primary: #855300;

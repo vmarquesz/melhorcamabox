@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://guiadeairfryer.com.br/sitemap-index.xml
+Sitemap: https://melhorcamabox.com.br/sitemap-index.xml

@@ -1,6 +1,6 @@
 {
-  "name": "guia-de-air-fryer",
-  "description": "Blog de afiliados sobre air fryer criado com Astro",
+  "name": "melhor-cama-box",
+  "description": "Blog de afiliados sobre cama box criado com Astro",
   "type": "module",
   "version": "1.0.0",
   "scripts": {

@@ -11,7 +11,7 @@ const sitemapFilter = (page) => !page.includes('/page/') && !page.includes('/sea
 // https://astro.build/config
 export default defineConfig({
   // Set the site URL for production
-  site: 'https://guiadeairfryer.com.br',
+  site: 'https://melhorcamabox.com.br',
   
   // Base path (set to '/' for most sites)
   base: '/',

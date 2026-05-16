@@ -1,11 +1,11 @@
-# Guia de Air Fryer - Blog de Afiliados (Astro)
+# Melhor Cama Box - Blog de Afiliados (Astro)
 
-Projeto de blog de afiliados focado em reviews de air fryers.
+Projeto de blog de afiliados focado em reviews de camas box.
 Stack principal: Astro + MDX + Tailwind CSS.
 
 ## Resumo do estado atual
 
-- Site: `https://guiadeairfryer.com.br`
+- Site: `https://melhorcamabox.com.br`
 - Conteúdo principal em `src/content/posts`
 - Imagens de conteúdo em `src/assets/images`
 - Rotas de tags foram removidas do front-end

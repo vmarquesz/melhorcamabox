@@ -1,11 +1,11 @@
 ---
 title: "Política de Privacidade"
-description: "Como o Guia de Air Fryer cuida dos seus dados"
+description: "Como o Melhor Cama Box cuida dos seus dados"
 slug: "politica-de-privacidade"
 draft: false
 ---
 
-A sua privacidade é importante para nós. É política do Guia de Air Fryer respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site [Guia de Air Fryer](https://guiadeairfryer.com.br), e outros sites que possuímos e operamos.
+A sua privacidade é importante para nós. É política do Melhor Cama Box respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site [Melhor Cama Box](https://melhorcamabox.com.br), e outros sites que possuímos e operamos.
 
 Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.
 
@@ -26,11 +26,11 @@ O uso continuado de nosso site será considerado como aceitação de nossas prá
 
 ### Compromisso do Usuário
 
-O usuário se compromete a fazer uso adequado dos conteúdos e da informação que o Guia de Air Fryer oferece no site e com caráter enunciativo, mas não limitativo:
+O usuário se compromete a fazer uso adequado dos conteúdos e da informação que o Melhor Cama Box oferece no site e com caráter enunciativo, mas não limitativo:
 
 * A) Não se envolver em atividades que sejam ilegais ou contrárias à boa fé e à ordem pública;
 * B) Não difundir propaganda ou conteúdo de natureza racista, xenofóbica, jogos de sorte ou azar, qualquer tipo de pornografia ilegal, de apologia ao terrorismo ou contra os direitos humanos;
-* C) Não causar danos aos sistemas físicos e lógicos do Guia de Air Fryer, de seus fornecedores ou terceiros, para introduzir ou disseminar vírus informáticos ou quaisquer outros sistemas de hardware ou software que sejam capazes de causar danos anteriormente mencionados.
+* C) Não causar danos aos sistemas físicos e lógicos do Melhor Cama Box, de seus fornecedores ou terceiros, para introduzir ou disseminar vírus informáticos ou quaisquer outros sistemas de hardware ou software que sejam capazes de causar danos anteriormente mencionados.
 
 ### Mais informações
 
